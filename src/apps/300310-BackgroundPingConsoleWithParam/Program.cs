@@ -2,18 +2,25 @@
 
 Console.WriteLine("Hello, World!");
 
-var bgThread = new Thread(() =>
+var bgThread = new Thread((object? data) =>
 {
-    while (true)
+    if (data is null) return;
+
+    int counter = 0;
+    var result = int.TryParse(data.ToString(), out int maxCount);
+    if (!result) return;
+
+    while (counter < maxCount)
     {
         bool isNetworkUp = NetworkInterface.GetIsNetworkAvailable();
         Console.WriteLine($"Is network available? Answer: {isNetworkUp}");
         Thread.Sleep(100);
+        counter++;
     }
 });
 
 bgThread.IsBackground = true;
-bgThread.Start();
+bgThread.Start(12);
 
 for (int i = 0; i < 10; i++)
 {
