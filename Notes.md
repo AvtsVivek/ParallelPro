@@ -50,3 +50,11 @@ by another thread or the managed environment.
     - The Task object returns from an async operation, providing a way for developers to check the status of the operation or wait for its completion. 
     - The work of an async task is performed on a background thread on the thread pool, rather than in the main thread. 
 
+- ThreadPool. For an example, take a look at 300400-ThreadPoolIntro
+  - The key differences when it comes to ThreadPool as againest regular threads are
+  - 1. there is no need to set IsBackground to true, and 
+  - 2. you do not call Start(). The process will start either as soon as the item is queued on ThreadPool or when the next ThreadPool becomes available.
+
+ - Timers. They raise events at given times or specific intervals. Take a look at the example 300450-TimersExamples
+ 
+ - 
