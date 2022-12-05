@@ -42,5 +42,11 @@ by another thread or the managed environment.
 
 - Cancellation. You need to pass a CancellationTokenSource when the thread is being created. Then call the Cancel method when ever you want to cancel the thread. See the example 300375-ThreadCanceling
 
-- 
+- Does the use of async/await create a new thread?
+  - The answer is not clear.
+  - See [this so question](https://stackoverflow.com/q/27265818/1977871) and [this one.](https://stackoverflow.com/questions/17661428/async-stay-on-the-current-thread)
+  - Other than that [here is what Stephan Cleary says](https://blog.stephencleary.com/2013/11/there-is-no-thread.html)
+  - But on the other side, the book says the following in Chapter 2 in the section C# 5 and 6 and .NET Framework 4.5.x
+    - The Task object returns from an async operation, providing a way for developers to check the status of the operation or wait for its completion. 
+    - The work of an async task is performed on a background thread on the thread pool, rather than in the main thread. 
 
