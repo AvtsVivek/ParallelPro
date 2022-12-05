@@ -40,3 +40,7 @@ by another thread or the managed environment.
 
 - Thread Priority example. Take a look at this one. 300350-ThreadPriority
 
+- Cancellation. You need to pass a CancellationTokenSource when the thread is being created. Then call the Cancel method when ever you want to cancel the thread. See the example 300375-ThreadCanceling
+
+- 
+
