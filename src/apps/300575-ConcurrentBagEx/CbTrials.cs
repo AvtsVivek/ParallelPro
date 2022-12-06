@@ -10,9 +10,9 @@ namespace ConcurrentBagEx
 {
     public class CbTrials
     {
-        public ConcurrentBag<int> concurrentBag = new ConcurrentBag<int>();
+        private ConcurrentBag<int> concurrentBag = new ConcurrentBag<int>();
 
-        public List<Task> addNumberToConcurrentBagTaskList = new List<Task>();
+        private List<Task> addNumberToConcurrentBagTaskList = new List<Task>();
 
         public void AddTasks()
         {

@@ -10,11 +10,11 @@ namespace ConcurrentBagConsume
 {
     public class CbTrials
     {
-        public ConcurrentBag<int> concurrentBag = new ConcurrentBag<int>();
+        private ConcurrentBag<int> concurrentBag = new ConcurrentBag<int>();
 
-        public List<Task> removeNumberToConcurrentBagTaskList = new List<Task>();
+        private List<Task> removeNumberToConcurrentBagTaskList = new List<Task>();
 
-        public List<Task> addNumberToConcurrentBagTaskList = new List<Task>();
+        private List<Task> addNumberToConcurrentBagTaskList = new List<Task>();
 
         private int itemsInBag = 0;
 
