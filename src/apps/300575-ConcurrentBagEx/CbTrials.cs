@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ConcurrentBagEx
 {
     public class CbTrials
@@ -25,7 +26,7 @@ namespace ConcurrentBagEx
 
                     concurrentBag.Add(numberToAdd);
 
-                    Console.WriteLine($"A new task is added to list, while the {numberToAdd} to ");
+                    Console.WriteLine($"A new task is added to list, which will add {numberToAdd} to concurrent bag ");
 
                 }));
             }
@@ -40,6 +41,15 @@ namespace ConcurrentBagEx
             Task.WaitAll(addNumberToConcurrentBagTaskList.ToArray());
 
             Console.WriteLine("All tasks done ");
+        }
+
+        public void PrintAllItemsInConcurrentBag()
+        {
+            Console.WriteLine($"The number of items in concurrent bag is {concurrentBag.Count}");
+
+            foreach (var item in concurrentBag)
+                Console.WriteLine(item);
+            
         }
     }
 }

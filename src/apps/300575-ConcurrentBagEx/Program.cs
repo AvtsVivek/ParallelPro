@@ -9,3 +9,4 @@ cbTrials.AddTasks();
 
 cbTrials.RunAllTasks();
 
+cbTrials.PrintAllItemsInConcurrentBag();
