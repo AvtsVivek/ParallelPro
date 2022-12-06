@@ -9,8 +9,9 @@ namespace ConcurrentBagEx
 {
     public class CbTrials
     {
-        public ConcurrentBag<int> cb = new ConcurrentBag<int>();
-        public List<Task> addTaskList = new List<Task>();
+        public ConcurrentBag<int> concurrentBag = new ConcurrentBag<int>();
+
+        public List<Task> addNumberToConcurrentBagTaskList = new List<Task>();
 
         public void AddTasks()
         {
@@ -20,9 +21,12 @@ namespace ConcurrentBagEx
             {
                 var numberToAdd = i;
                 
-                addTaskList.Add(Task.Run(() => {
-                    cb.Add(numberToAdd);
+                addNumberToConcurrentBagTaskList.Add(Task.Run(() => {
+
+                    concurrentBag.Add(numberToAdd);
+
                     Console.WriteLine($"A new task is added to list, while the {numberToAdd} to ");
+
                 }));
             }
 
@@ -32,7 +36,9 @@ namespace ConcurrentBagEx
         public void RunAllTasks()
         {
             Console.WriteLine("Start of RunAllTasks");
-            Task.WaitAll(addTaskList.ToArray());
+
+            Task.WaitAll(addNumberToConcurrentBagTaskList.ToArray());
+
             Console.WriteLine("All tasks done ");
         }
     }
