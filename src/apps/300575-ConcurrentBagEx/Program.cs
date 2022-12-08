@@ -7,6 +7,6 @@ var cbTrials = new CbTrials();
 
 cbTrials.AddTasks();
 
-cbTrials.RunAllTasks();
+cbTrials.EnsureAllTasksAreCompleted();
 
 cbTrials.PrintAllItemsInConcurrentBag();

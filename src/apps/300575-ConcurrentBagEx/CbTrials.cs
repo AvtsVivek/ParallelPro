@@ -14,6 +14,11 @@ namespace ConcurrentBagEx
 
         private List<Task> addNumberToConcurrentBagTaskList = new List<Task>();
 
+        /// <summary>
+        /// This method creates and adds tasks to the task list. 
+        /// Eash task will add a specific number(1 to 500) to the concurrenBag.
+        /// 
+        /// </summary>
         public void AddTasks()
         {
             Console.WriteLine("Start of AddTasks method");
@@ -34,7 +39,7 @@ namespace ConcurrentBagEx
             Console.WriteLine("End of AddTasks method");
         }
 
-        public void RunAllTasks()
+        public void EnsureAllTasksAreCompleted()
         {
             Console.WriteLine("Start of RunAllTasks");
 
