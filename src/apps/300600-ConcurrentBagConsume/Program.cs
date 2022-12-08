@@ -7,7 +7,7 @@ var cbTrials = new CbTrials();
 
 cbTrials.AddTasksToAddNumbers();
 
-cbTrials.RunAllAddTasks();
+cbTrials.EnsureAllTasksAreCompleted();
 
 cbTrials.AddTasksToRemoveNumbers();
 

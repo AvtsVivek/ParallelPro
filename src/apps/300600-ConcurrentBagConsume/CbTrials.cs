@@ -16,7 +16,7 @@ namespace ConcurrentBagConsume
 
         private List<Task> addNumberToConcurrentBagTaskList = new List<Task>();
 
-        private int itemsInBag = 0;
+        private int itemsInBagCount = 0;
 
         public void AddTasksToAddNumbers()
         {
@@ -38,13 +38,13 @@ namespace ConcurrentBagConsume
             Console.WriteLine("End of AddTasks method");
         }
 
-        public void RunAllAddTasks()
+        public void EnsureAllTasksAreCompleted()
         {
-            Console.WriteLine("Start of RunAllAddTasks");
+            Console.WriteLine("Start of EnsureAllTasksAreCompleted");
 
             Task.WaitAll(addNumberToConcurrentBagTaskList.ToArray());
 
-            Console.WriteLine("Add All tasks done ");
+            Console.WriteLine("All tasks done ");
         }
 
         public void AddTasksToRemoveNumbers()
@@ -58,7 +58,7 @@ namespace ConcurrentBagConsume
                     if (concurrentBag.TryTake(out item))
                     {
                         Console.WriteLine(item);
-                        Interlocked.Increment(ref itemsInBag);
+                        Interlocked.Increment(ref itemsInBagCount);
                     }
                 }));
             }
@@ -70,7 +70,7 @@ namespace ConcurrentBagConsume
 
             Task.WaitAll(removeNumberToConcurrentBagTaskList.ToArray());
 
-            Console.WriteLine($"There were {itemsInBag} items in the bag");
+            Console.WriteLine($"There were {itemsInBagCount} items in the bag");
 
             int unexpectedItem;
             if (concurrentBag.TryPeek(out unexpectedItem))
