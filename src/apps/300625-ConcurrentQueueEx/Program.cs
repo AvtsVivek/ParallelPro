@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 
 // Construct a ConcurrentQueue.
-ConcurrentQueue<int> cq = new ConcurrentQueue<int>();
+ConcurrentQueue<int> cq = new();
 
 // Populate the queue.
 for (int i = 0; i < 10000; i++)
@@ -19,6 +19,8 @@ else if (result != 0)
 {
     Console.WriteLine("CQ: Expected TryPeek result of 0, got {0}", result);
 }
+else
+    Console.WriteLine("Try peek succeeded!");
 
 int outerSum = 0;
 // An action to consume the ConcurrentQueue.
