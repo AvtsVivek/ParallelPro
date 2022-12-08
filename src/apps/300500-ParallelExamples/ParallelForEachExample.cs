@@ -9,11 +9,11 @@
                 bool timeContainsNumber = DateTime.Now.ToLongTimeString().Contains(number.ToString());
                 if (timeContainsNumber)
                 {
-                    Console.WriteLine($"The current time contains number {number}. Thread id: {Thread.CurrentThread.ManagedThreadId}");
+                    Console.WriteLine($"The current time contains number {number}. Thread id: {Environment.CurrentManagedThreadId}");
                 }
                 else
                 {
-                    Console.WriteLine($"The current time does not contain number {number}. Thread id: {Thread.CurrentThread.ManagedThreadId}");
+                    Console.WriteLine($"The current time does not contain number {number}. Thread id: {Environment.CurrentManagedThreadId}");
                 }
             });
         }
