@@ -38,7 +38,7 @@ Action pushAndPop = () =>
 {
     Console.WriteLine($"Task started on {Task.CurrentId}");
 
-    int item;
+    int item = 100;
     for (int i = 0; i < items; i++)
         stack.Push(i);
     for (int i = 0; i < items; i++)
