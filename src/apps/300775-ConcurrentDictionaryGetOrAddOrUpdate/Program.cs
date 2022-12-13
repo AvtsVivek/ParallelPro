@@ -11,7 +11,7 @@ public class Program
     static void Main()
     {
         // Construct a ConcurrentDictionary
-        ConcurrentDictionary<int, int> cd = new ConcurrentDictionary<int, int>();
+        var cd = new ConcurrentDictionary<int, int>();
 
         // Bombard the ConcurrentDictionary with 10000 competing AddOrUpdates
         Parallel.For(0, 10000, i =>

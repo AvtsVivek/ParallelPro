@@ -20,8 +20,8 @@ public class Program
     //      IPCC(T).CopyTo()
     static void TestSafeStack()
     {
-        SafeStack<int> stack = new SafeStack<int>();
-        IProducerConsumerCollection<int> ipcc = (IProducerConsumerCollection<int>)stack;
+        var stack = new SafeStack<int>();
+        var ipcc = (IProducerConsumerCollection<int>)stack;
 
         // Test Push()/TryAdd()
         stack.Push(10); Console.WriteLine("Pushed 10");

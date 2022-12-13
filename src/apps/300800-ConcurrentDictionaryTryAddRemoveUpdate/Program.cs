@@ -13,7 +13,7 @@ public class Program
         int numFailures = 0; // for bookkeeping
 
         // Construct an empty dictionary
-        ConcurrentDictionary<int, String> cd = new ConcurrentDictionary<int, string>();
+        var cd = new ConcurrentDictionary<int, string>();
 
         // This should work
         if (!cd.TryAdd(1, "one"))
