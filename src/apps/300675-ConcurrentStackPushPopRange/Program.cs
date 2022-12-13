@@ -8,7 +8,7 @@ var stack = new ConcurrentStack<int>();
 await Task.WhenAll(Enumerable.Range(0, numParallelTasks).Select(i => Task.Factory.StartNew((state) =>
 {
     // state = i * numItems
-    int index = (int)state;
+    int index = (int)state!;
     int[] array = new int[numItems];
     for (int j = 0; j < numItems; j++)
     {
@@ -23,7 +23,7 @@ int numTotalElements = 4 * numItems;
 int[] resultBuffer = new int[numTotalElements];
 await Task.WhenAll(Enumerable.Range(0, numParallelTasks).Select(i => Task.Factory.StartNew(obj =>
 {
-    int index = (int)obj;
+    int index = (int)obj!;
     int result = stack.TryPopRange(resultBuffer, index, numItems);
 
     Console.WriteLine($"TryPopRange expected {numItems}, got {result}.");
