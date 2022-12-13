@@ -9,15 +9,15 @@ class AddTakeDemo
     //      BlockingCollection<T>.CompleteAdding()
     public static async Task BC_AddTakeCompleteAdding()
     {
-        using (BlockingCollection<int> bc = new BlockingCollection<int>())
+        using (BlockingCollection<int> blockingCollection = new BlockingCollection<int>())
         {
             // Spin up a Task to populate the BlockingCollection
             Task t1 = Task.Run(() =>
             {
-                bc.Add(1);
-                bc.Add(2);
-                bc.Add(3);
-                bc.CompleteAdding();
+                blockingCollection.Add(1);
+                blockingCollection.Add(2);
+                blockingCollection.Add(3);
+                blockingCollection.CompleteAdding();
             });
 
             // Spin up a Task to consume the BlockingCollection
@@ -26,7 +26,7 @@ class AddTakeDemo
                 try
                 {
                     // Consume consume the BlockingCollection
-                    while (true) Console.WriteLine(bc.Take());
+                    while (true) Console.WriteLine(blockingCollection.Take());
                 }
                 catch (InvalidOperationException)
                 {

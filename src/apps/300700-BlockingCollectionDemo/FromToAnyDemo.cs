@@ -16,9 +16,8 @@ class FromToAnyDemo
         // Should be able to add 10 items w/o blocking
         int numFailures = 0;
         for (int i = 0; i < 10; i++)
-        {
             if (BlockingCollection<int>.TryAddToAny(bcs, i) == -1) numFailures++;
-        }
+        
         Console.WriteLine("TryAddToAny: {0} failures (should be 0)", numFailures);
 
         // Should be able to retrieve 10 items

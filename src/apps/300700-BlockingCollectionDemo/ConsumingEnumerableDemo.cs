@@ -9,28 +9,29 @@ class ConsumingEnumerableDemo
     //      BlockingCollection<T>.GetConsumingEnumerable()
     public static async Task BC_GetConsumingEnumerable()
     {
-        using (BlockingCollection<int> bc = new BlockingCollection<int>())
+        using (BlockingCollection<int> blockingCollection = new BlockingCollection<int>())
         {
             // Kick off a producer task
             var producerTask = Task.Run(async () =>
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    bc.Add(i);
+                    blockingCollection.Add(i);
                     Console.WriteLine($"Producing: {i}");
 
                     await Task.Delay(100); // sleep 100 ms between adds
                 }
 
                 // Need to do this to keep foreach below from hanging
-                bc.CompleteAdding();
+                blockingCollection.CompleteAdding();
             });
 
             // Now consume the blocking collection with foreach.
-            // Use bc.GetConsumingEnumerable() instead of just bc because the
+            // Use blockingCollection.GetConsumingEnumerable() instead of
+            // just blockingCollection because the
             // former will block waiting for completion and the latter will
             // simply take a snapshot of the current state of the underlying collection.
-            foreach (var item in bc.GetConsumingEnumerable())
+            foreach (var item in blockingCollection.GetConsumingEnumerable())
             {
                 Console.WriteLine($"Consuming: {item}");
             }
