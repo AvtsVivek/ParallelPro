@@ -5,4 +5,7 @@
 
 ![Install  ](./images/InstallConcVizUsingPowershell.jpg)
 
+- once installed, run the app. Run the app using visual studio 2022 and then Analyze -> Concurrency Visualizer -> With Current Project
+
+- Note the ids of the process threads and the Threads in the visualizer
 
