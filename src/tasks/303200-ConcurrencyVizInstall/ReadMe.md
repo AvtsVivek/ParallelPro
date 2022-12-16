@@ -9,3 +9,6 @@
 
 - Note the ids of the process threads and the Threads in the visualizer
 
+![Concurrrency Viz.jpg  ](./images/ConcurrrencyViz1.jpg)
+
+![Concurrrency Viz.jpg  ](./images/ConcurrrencyViz1.jpg)

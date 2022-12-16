@@ -1,9 +1,9 @@
 cd ../../..
 
-cd src/tasks/300825-OrderablePartitionerEx
+cd src/tasks/303200-ConcurrencyVizInstall
 
-cd src/apps/300825-OrderablePartitionerEx
+cd src/apps/303200-ConcurrencyVizInstall
 
-dotnet run --project ./OrderablePartitionerEx.csproj
+dotnet run --project ./ConcurrencyVizInstall.csproj
 
 
