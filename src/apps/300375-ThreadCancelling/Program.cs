@@ -1,6 +1,9 @@
 ﻿using BackgroundPingConsoleApp_cancel;
 
 Console.WriteLine("Hello, World!");
+
+NetworkingWork.PrintThreadDetails();
+
 var networkingWork = new NetworkingWork();
 
 var pingThread = new Thread(networkingWork.CheckNetworkStatus!);

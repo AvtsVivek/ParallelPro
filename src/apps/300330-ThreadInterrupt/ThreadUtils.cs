@@ -12,6 +12,9 @@ namespace ThreadInterrupt
         {
             Console.WriteLine("Thread '{0}' about to sleep indefinitely.",
                               Thread.CurrentThread.Name);
+
+            PrintThreadDetails();
+
             try
             {
                 Thread.Sleep(Timeout.Infinite);
@@ -30,5 +33,21 @@ namespace ThreadInterrupt
                               Thread.CurrentThread.Name);
             Console.WriteLine();
         }
+
+        internal static void PrintThreadDetails()
+        {
+            Console.ForegroundColor= ConsoleColor.Green;
+            Console.WriteLine($"The current thread id is {Thread.CurrentThread.ManagedThreadId}.");
+
+            var backgroundString = Thread.CurrentThread.IsBackground ? "a background thread" : "NOT a background thread";
+
+            Console.WriteLine($"This thread is {backgroundString}");
+
+            var threadPoolInfoString = Thread.CurrentThread.IsThreadPoolThread ? "a thread pool thread" : "NOT a thread pool thread";
+
+            Console.WriteLine($"This thread is {threadPoolInfoString}");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
     }
 }

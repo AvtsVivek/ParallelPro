@@ -2,6 +2,8 @@
 
 using ThreadInterrupt;
 
+ThreadUtils.PrintThreadDetails();
+
 var sleepingThread = new Thread(ThreadUtils.SleepIndefinitely);
 sleepingThread.Name = "Sleeping";
 sleepingThread.Start();

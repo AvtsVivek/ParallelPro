@@ -1,6 +1,9 @@
 ﻿using ThreadPriority;
 
 Console.WriteLine("Hello, World!");
+
+NetworkingWork.PrintThreadDetails();
+
 var networkingWork = new NetworkingWork();
 
 var bgThread1 = new Thread(networkingWork.CheckNetworkStatus!);

@@ -59,7 +59,23 @@ namespace TimersExamples
     {
         internal void Update(int messageCount)
         {
-            Debug.WriteLine($"You have {messageCount} new messages!");
+            var debugMessage = $"You have {messageCount} new messages!";
+
+            debugMessage = debugMessage + Environment.NewLine + $"The current thread id is {Thread.CurrentThread.ManagedThreadId}.";
+
+            var backgroundString = Thread.CurrentThread.IsBackground ? "a background thread" : "NOT a background thread";
+
+            backgroundString = "This is " + backgroundString;
+
+            debugMessage = debugMessage + Environment.NewLine + backgroundString;
+
+            var threadPoolInfoString = Thread.CurrentThread.IsThreadPoolThread ? "a thread pool thread" : "NOT a thread pool thread";
+
+            threadPoolInfoString = "This is " + threadPoolInfoString;
+
+            debugMessage = debugMessage + Environment.NewLine + threadPoolInfoString;
+
+            Debug.WriteLine(debugMessage);
         }
     }
 }
