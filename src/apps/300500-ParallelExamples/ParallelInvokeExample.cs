@@ -7,22 +7,38 @@
             Parallel.Invoke(
                 DoComplexWork,
                 () => {
-                    Console.WriteLine($"Hello from lambda expression. Thread id: {Environment.CurrentManagedThreadId}");
+                    var localMessage = $"Hello from lambda expression. Thread id: {Environment.CurrentManagedThreadId}";
+                    var threadInfo = ThreadUtils.PrintThreadDetails("ParallelInvokeExample - lambda expression");
+                    var finalMessage = threadInfo + Environment.NewLine + localMessage;
+                    finalMessage = finalMessage + Environment.NewLine;
+                    Console.WriteLine(finalMessage);
                 },
                 new Action(() =>
                 {
-                    Console.WriteLine($"Hello from Action. Thread id: {Environment.CurrentManagedThreadId}");
+                    var localMessage = $"Hello from Action. Thread id: {Environment.CurrentManagedThreadId}";
+                    var threadInfo = ThreadUtils.PrintThreadDetails("ParallelInvokeExample - Action");
+                    var finalMessage = threadInfo + Environment.NewLine + localMessage;
+                    finalMessage = finalMessage + Environment.NewLine;
+                    Console.WriteLine(finalMessage);
                 }),
                 delegate ()
                 {
-                    Console.WriteLine($"Hello from delegate. Thread id: {Environment.CurrentManagedThreadId}");
+                    var localMessage = $"Hello from delegate. Thread id: {Environment.CurrentManagedThreadId}";
+                    var threadInfo = ThreadUtils.PrintThreadDetails("ParallelInvokeExample - Delegate");
+                    var finalMessage = threadInfo + Environment.NewLine + localMessage;
+                    finalMessage = finalMessage + Environment.NewLine;
+                    Console.WriteLine(finalMessage);
                 }
             );
         }
 
         private void DoComplexWork()
         {
-            Console.WriteLine($"Hello from DoComplexWork method. Thread id: {Environment.CurrentManagedThreadId}");
+            var localMessage = $"Hello from DoComplexWork method. Thread id: {Environment.CurrentManagedThreadId}";
+            var threadInfo = ThreadUtils.PrintThreadDetails("ParallelInvokeExample - DoComplexWork");
+            var finalMessage = threadInfo + Environment.NewLine + localMessage;
+            finalMessage = finalMessage + Environment.NewLine;
+            Console.WriteLine(finalMessage);
         }
     }
 }
