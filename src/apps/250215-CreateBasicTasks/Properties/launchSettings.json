@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CreateBasicTasks": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

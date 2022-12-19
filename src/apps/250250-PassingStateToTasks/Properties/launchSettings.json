@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PassingStateToTasks": {
+      "commandName": "Project",
+      "commandLineArgs": "false"
+    }
+  }
+}
