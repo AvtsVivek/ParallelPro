@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GettingResultFromTasks": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}
