@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CancellationDelegate": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}
