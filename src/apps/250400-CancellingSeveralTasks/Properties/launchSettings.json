@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CancellingSeveralTasks": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}
