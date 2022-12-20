@@ -16,29 +16,13 @@
             Console.WriteLine(threadInfo);
         }
 
-        // use an Action delegate and a named method
-        Task task1 = new Task(new Action<object?>(PrintMessage!),
-        "First task");
-        
-        // use a anonymous delegate
-        Task task2 = new Task(delegate (object? obj) {
-            PrintMessage(obj!);
-        }, "Second Task");
-        
-        // use a lambda expression and a named method
-        // note that parameters to a lambda don’t need
-        // to be quoted if there is only one parameter
-        Task task3 = new Task((obj) => PrintMessage(obj!), "Third task");
-        
-        // use a lambda expression and an anonymous method
-        Task task4 = new Task((obj) => {
-            PrintMessage(obj!);
-        }, "Fourth task");
+        string[] messages = { "First task", "Second task", "Third task", "Fourth task" };
 
-        task1.Start();
-        task2.Start();
-        task3.Start();
-        task4.Start();
+        foreach (string msg in messages)
+        {
+            Task myTask = new Task(obj => PrintMessage((string)obj!), msg);
+            myTask.Start();
+        }
 
         // wait for input before exiting
         Console.WriteLine("Main method complete. Press enter to finish.");
@@ -49,7 +33,7 @@
     {
         if (PrintThreadInfo)
         {
-            var threadInfo = PrintThreadDetails($"From PrintMessage Method {message}");
+            var threadInfo = PrintThreadDetails($"From PrintMessage Method {message} ");
             Console.WriteLine(threadInfo);
         }
         else

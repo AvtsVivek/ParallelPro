@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PassingStateToTasksWithLoop": {
+      "commandName": "Project",
+      "commandLineArgs": "false"
+    }
+  }
+}
