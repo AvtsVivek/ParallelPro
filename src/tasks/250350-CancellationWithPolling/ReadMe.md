@@ -1,9 +1,20 @@
-- Getting the result from task
 
-- To get a result from a Task, create instances of Task<T>, where T is the type of the result that will be
-produced and return an instance of that type in your Task body. To read the result, you call the Result
-property of the Task you created
+Creating a Task that you can cancel is a four-step process:
 
-- Reading the Result property waits until the Task it has been called on has completed
+1. Create a new instance of System.Threading.CancellationTokenSource:
+CancellationTokenSource tokenSource = new CancellationTokenSource
+
+2. Call the CancellationTokenSource.Token property to get a System.Threading.
+CancellationToken:
+CancellationToken token = tokenSource.Token;
+
+3. Create a new Task or Task<T> using an Action or Action<object> delegate and
+the CancellationToken from step 2 as constructor arguments:
+Task task1 = new Task(new Action(myMethod), token);
+
+4. Call the Start() method on your Task or Task<T> as you would normally.
+
+- To cancel a Task, simply call the Cancel() method on the CancellationTokenSource created in step 1.
+
 - 
 
