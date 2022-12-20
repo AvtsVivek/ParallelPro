@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "GettingResultFromTasksFactory": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

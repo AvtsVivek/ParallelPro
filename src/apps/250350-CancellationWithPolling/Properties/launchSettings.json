@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CancellationWithPolling": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}
