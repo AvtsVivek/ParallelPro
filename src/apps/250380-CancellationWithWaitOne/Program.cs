@@ -16,17 +16,18 @@
         }
 
         // create the cancellation token source
-        var cancellationTokenSource = new CancellationTokenSource();
+        var cancellationTokenSource
+            = new CancellationTokenSource();
 
         // create the cancellation token
         var cancellationToken = cancellationTokenSource.Token;
 
         // create the task
-        var task = new Task(() => {
+        var task1 = new Task(() => {
 
             if (PrintThreadInfo)
             {
-                var threadInfo = PrintThreadDetails("From Task Method");
+                var threadInfo = PrintThreadDetails("From task 1 Method");
                 Console.WriteLine(threadInfo);
             }
 
@@ -42,11 +43,23 @@
                     Console.WriteLine("Int value {0}", i);
                 
             }
+
         }, cancellationToken);
 
-        // register a cancellation delegate
-        cancellationToken.Register(() => {
-            Console.WriteLine(" Cancellation token Delegate Invoked ");
+        // create a second task that will use the wait handle
+        var task2 = new Task(() => {
+
+            if (PrintThreadInfo)
+            {
+                var threadInfo = PrintThreadDetails("From Task 2 Method");
+                Console.WriteLine(threadInfo);
+            }
+
+            // wait on the handle
+            cancellationToken.WaitHandle.WaitOne();
+            // write out a message
+            Console.WriteLine(">>>>> Wait handle released");
+
         });
 
         // wait for input before we start the task
@@ -54,8 +67,9 @@
         Console.WriteLine("Press enter again to cancel task");
         Console.ReadLine();
 
-        // start the task
-        task.Start();
+        // start the tasks
+        task1.Start();
+        task2.Start();
 
         // read a line from the console.
         Console.ReadLine();

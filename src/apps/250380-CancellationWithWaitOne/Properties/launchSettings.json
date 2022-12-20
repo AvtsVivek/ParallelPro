@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CancellationWithWaitOne": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}
