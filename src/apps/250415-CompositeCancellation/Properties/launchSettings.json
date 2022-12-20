@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CompositeCancellation": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}
