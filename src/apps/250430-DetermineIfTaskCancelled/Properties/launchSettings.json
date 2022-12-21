@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DetermineIfTaskCancelled": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

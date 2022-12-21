@@ -1,4 +1,7 @@
-﻿class Program
+﻿using System.Threading.Tasks;
+using System.Threading;
+
+class Program
 {
     private static bool PrintThreadInfo = false;
 
@@ -16,66 +19,58 @@
         }
 
         // create the cancellation token source
-        var cancellationTokenSource = new CancellationTokenSource();
-
+        var cancellationTokenSource1 = new CancellationTokenSource();
         // create the cancellation token
-        var cancellationToken = cancellationTokenSource.Token;
+        var cancellationToken1 = cancellationTokenSource1.Token;
 
-        // create the task
-        var task1 = new Task(() => {
-
+        // create the first task, which we will let run fully
+        var task1 = new Task(() =>
+        {
             if (PrintThreadInfo)
             {
-                var threadInfo = PrintThreadDetails("From task 1 Method");
+                var threadInfo = PrintThreadDetails("From Main Method");
+                Console.WriteLine(threadInfo);
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                cancellationToken1.ThrowIfCancellationRequested();
+                Console.WriteLine("Task 1 - Int value {0}", i);
+            }
+        }, cancellationToken1);
+
+        // create the second cancellation token source
+        var cancellationTokenSource2 = new CancellationTokenSource();
+
+        // create the cancellation token
+        var cancellationToken2 = cancellationTokenSource2.Token;
+
+        // create the second task, which we will cancel
+        var task2 = new Task(() =>
+        {
+            if (PrintThreadInfo)
+            {
+                var threadInfo = PrintThreadDetails("From Main Method");
                 Console.WriteLine(threadInfo);
             }
 
             for (int i = 0; i < int.MaxValue; i++)
             {
-                Thread.Sleep(100);
-                if (cancellationToken.IsCancellationRequested)
-                {
-                    Console.WriteLine("Task cancel detected");
-                    throw new OperationCanceledException(cancellationToken);
-                }
-                else
-                    Console.WriteLine("Int value {0}", i);
-                
+                cancellationToken2.ThrowIfCancellationRequested();
+                Console.WriteLine("Task 2 - Int value {0}", i);
             }
+        }, cancellationToken2);
 
-        }, cancellationToken);
-
-        // create a second task that will use the wait handle
-        var task2 = new Task(() => {
-
-            if (PrintThreadInfo)
-            {
-                var threadInfo = PrintThreadDetails("From Task 2 Method");
-                Console.WriteLine(threadInfo);
-            }
-
-            // wait on the handle
-            cancellationToken.WaitHandle.WaitOne();
-            // write out a message
-            Console.WriteLine(">>>>> Wait handle released");
-
-        });
-
-        // wait for input before we start the task
-        Console.WriteLine("Press enter to start task");
-        Console.WriteLine("Press enter again to cancel task");
-        Console.ReadLine();
-
-        // start the tasks
+        // start all of the tasks
         task1.Start();
         task2.Start();
 
-        // read a line from the console.
-        Console.ReadLine();
+        // cancel the second token source
+        cancellationTokenSource2.Cancel();
 
-        // cancel the task
-        Console.WriteLine("Cancelling task");
-        cancellationTokenSource.Cancel();
+        // write out the cancellation detail of each task
+        Console.WriteLine("Task 1 cancelled? {0}", task1.IsCanceled);
+        Console.WriteLine("Task 2 cancelled? {0}", task2.IsCanceled);
 
         // wait for input before exiting
         Console.WriteLine("Main method complete. Press enter to finish.");
