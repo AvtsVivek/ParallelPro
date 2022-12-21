@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ExceptionEscalationPolicy": {
+      "commandName": "Project",
+      "commandLineArgs": "false"
+    }
+  }
+}

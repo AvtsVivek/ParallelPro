@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ExceptionHandlingWithTaskProperties": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

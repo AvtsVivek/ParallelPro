@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IterativeExceptionHandler": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

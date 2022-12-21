@@ -16,5 +16,5 @@ Task task1 = new Task(new Action(myMethod), token);
 
 - To cancel a Task, simply call the Cancel() method on the CancellationTokenSource created in step 1.
 
-- 
+- You should throw an instance of the OperationCanceledException to acknowledge a cancellation request.
 
