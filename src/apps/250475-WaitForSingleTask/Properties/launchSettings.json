@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "WaitOneTimer": {
+    "WaitForSingleTask": {
       "commandName": "Project",
-      "commandLineArgs": "false"
+      "commandLineArgs": "true"
     }
   }
 }

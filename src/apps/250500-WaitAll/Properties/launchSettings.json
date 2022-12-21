@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "WaitOneTimer": {
+    "WaitAll": {
       "commandName": "Project",
       "commandLineArgs": "false"
     }
