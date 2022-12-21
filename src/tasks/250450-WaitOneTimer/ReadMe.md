@@ -9,11 +9,16 @@ check the cancellation status. This means that the task continues to exist, albe
 asleep, for up to n seconds after the token has been cancelled.
 
 - Thread.SpinWait() can also be used. But its not recommended.
+
 - When you use the other two sleep techniques, the thread that is performing your task gives up its turn
 in the schedule when its sleeping, so any other threads can have a turn. The scheduler, which is
 responsible for managing the threads running at any given time, has to do some work to determine
 which thread should go next and make it happen. You can avoid the scheduler having to do this work by
 using a technique called spin waiting: the thread doesn’t give up its turn; it just enters a very tight loop
 on the CPU
+
+- The problem with spin waiting is that your task doesn’t stop using the CPU; it just
+burns a specified number of CPU cycles. This approach distorts the behavior of the scheduling process,
+and you can get some quite odd behaviors from an application if you use spin locks wrongly. So avoid spin locking, because it can cause a lot more problems than it solves.
 
 
