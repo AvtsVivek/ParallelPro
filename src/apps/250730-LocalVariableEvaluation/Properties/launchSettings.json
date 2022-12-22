@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LocalVariableEvaluation": {
+      "commandName": "Project",
+      "commandLineArgs": "false"
+    }
+  }
+}
