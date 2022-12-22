@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TaskDependencyDeadLock": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

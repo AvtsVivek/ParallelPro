@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/250665-LazyTaskExecution
+cd src/tasks/250700-LazyTaskExecution
 
-cd src/apps/250665-LazyTaskExecution
+cd src/apps/250700-LazyTaskExecution
 
 dotnet run --project ./LazyTaskExecution.csproj -- true
 
