@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LazyMultipleThreads": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

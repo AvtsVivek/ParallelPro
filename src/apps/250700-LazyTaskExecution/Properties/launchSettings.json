@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LazyTaskExecution": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}
