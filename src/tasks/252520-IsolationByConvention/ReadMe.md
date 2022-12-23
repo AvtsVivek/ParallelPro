@@ -9,6 +9,9 @@ results and combine them to accurately update the counter value.
 
 - So the simpleObject.Counter value changes only in the end after all of the tasks are executed completely and successifully.
 
-- There is no data race in here because the Tasks are only concerned with their own local version of the balance. 
-- This is an example of isolation by convention: the code is written so that the Tasks works in isolation but the isolation is not enforced by the .NET runtime; we have to take care to ensure that Tasks don’t share data by mistake.
+- There is no data race in here because the Tasks are only concerned with their own local version of the counter. 
+
+- This is an example of isolation by convention: the code is written so that the Tasks works in isolation but the isolation is not enforced by the .NET runtime; we the developers have to take care to ensure that Tasks don’t share data by mistake.
+
+
 
