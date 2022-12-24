@@ -15,7 +15,7 @@ class Program
         var taskList = new List<Task<int>>();
 
         // create the thread local storage
-        ThreadLocal<int> threadLocalStorage = new ThreadLocal<int>(() => {
+        var threadLocalStorage = new ThreadLocal<int>(() => {
             Console.WriteLine("Value factory called for value: {0}", simpleObject.Counter);
             return simpleObject.Counter;
         });
