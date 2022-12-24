@@ -1,8 +1,9 @@
-﻿using System.Security.Principal;
+﻿using System.Diagnostics;
+using System.Security.Principal;
 
 class SimpleClass
 {
-    public int Counter { get; set; }
+    public int Counter = 0;
 }
 class Program
 {
@@ -17,7 +18,7 @@ class Program
         // create the lock object
         var lockObj = new object();
 
-        for (var i = 0; i < 10; i++)
+        for (var i = 0; i < 50; i++)
         {
             // create a new task
             var task = new Task(() =>
@@ -28,7 +29,7 @@ class Program
                     lock (lockObj)
                     {
                         // update the counter
-                        simpleObject.Counter = simpleObject.Counter + 1;
+                        Interlocked.Increment(ref simpleObject.Counter);
                     }
                 }
             });
@@ -42,9 +43,11 @@ class Program
 
         // wait for all of the tasks to complete
         Task.WaitAll(taskList.ToArray());
-        
+
         // write out the counter value
-        Console.WriteLine("Expected value {0}, Counter value: {1}", 10000, simpleObject.Counter);
+        Console.WriteLine("Expected value {0}, Balance: {1}",
+            50000, simpleObject.Counter);
+
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");
         Console.ReadLine();

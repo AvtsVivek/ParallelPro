@@ -28,7 +28,7 @@ class Program
                 {
                     lock (lockObj)
                     {
-                        // update the balance
+                        // update the counter
                         simpleObject.Counter++; // = simpleObject.Counter + 1;
                     }
                 }
