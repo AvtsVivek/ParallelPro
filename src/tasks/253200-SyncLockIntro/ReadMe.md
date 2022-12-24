@@ -63,4 +63,8 @@ try {
 
 - The members of the Monitor class are static, which is why you must provide a lock object—this tells the Monitor class which critical region a Task is trying to enter.
 
+- Ensure that all of your Tasks use the same lock object when entering a given critical region. The lock keyword automatically takes care of acquiring and releasing the lock for the critical region by calling **Monitor.Enter()** and **Monitor.Exit()** for you.
+ 
+- 
+
 
