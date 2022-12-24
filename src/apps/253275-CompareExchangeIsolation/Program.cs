@@ -20,12 +20,29 @@ class Program
             // create a new task
             var task = new Task(() =>
             {
+                // get a local copy of the shared data
+                var startBalance = simpleObject.Counter;
+                // create a local working copy of the shared data
+                var localBalance = startBalance;
+
                 // enter a loop for 1000 increments
-                for (int j = 0; j < 1000; j++)
+                for (var j = 0; j < 1000; j++)
                 {
                     // update the counter
-                    Interlocked.Increment(ref simpleObject.Counter);
+                    // Interlocked.Increment(ref simpleObject.Counter);
+                    localBalance++;
                 }
+
+                // check to see if the shared data has changed since we started
+                // and if not, then update with our local value
+                var sharedData = Interlocked.CompareExchange(ref simpleObject.Counter, localBalance, startBalance);
+
+                if (sharedData == startBalance)
+                    Console.WriteLine("Shared data updated OK");
+                else
+                    Console.WriteLine("Shared data changed");
+                
+
             });
 
             taskList.Add(task);
@@ -39,8 +56,7 @@ class Program
         Task.WaitAll(taskList.ToArray());
 
         // write out the counter value
-        Console.WriteLine("Expected value {0}, Balance: {1}",
-            50000, simpleObject.Counter);
+        Console.WriteLine("Expected value {0}, Balance: {1}", 50000, simpleObject.Counter);
 
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");
