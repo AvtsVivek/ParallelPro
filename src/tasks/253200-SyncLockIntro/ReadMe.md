@@ -24,8 +24,43 @@ for (int j = 0; j < 1000; j++) {
 - Release or exit the lock: When a Task notifies the primitive that is leaving the critical section, it is said to **release or exit the lock**.
 
 - There are three kinds of synchronization primitives in the .NET Framework:
-  - Lightweight primitives
-  - Heavyweight (classic) primitives
-  - Wait handles
+  - **Lightweight primitives**. They can only provide synchronization within one application domain.
+  - **Heavyweight (classic) primitives**. These can be used across application domains.
+  - **Wait handles**. These use a feature of the Windows operating system and can be used to provide synchronization between processes.
 
-- 
+- When in trouble, 
+  - Pick the right synchronization primitive. Pick the lightest tool for the job.
+  - Do the synchronization correctly
+    - Dont do it too little
+    - Dont do it too much 
+    - Dont write you own synchronization primitives
+
+- So for this example.
+
+- The simplest way to use synchronization in C# is with the lock keyword, which is a two-stage process. 
+  - First, create a lock object that is visible to all of your Tasks. 
+  - Second, you must wrap the critical section in a lock block using the lock, as follows:
+
+  ```cs
+  lock (lockObj) {
+  ...critical section code...
+  }
+  ```
+
+- The lock keyword is a C# shortcut for using the System.Threading.Monitor class, which is a heavyweight primitive.
+
+- The preceding fragment is equivalent to the following:
+ 
+```cs 
+bool lockAcquired;
+try {
+  Monitor.Enter(lockObj, ref lockAcquired);
+  ...critical region code...
+} finally {
+  if (lockAcquired) Monitor.Exit(lockObj);
+}
+```
+
+- The members of the Monitor class are static, which is why you must provide a lock object—this tells the Monitor class which critical region a Task is trying to enter.
+
+
