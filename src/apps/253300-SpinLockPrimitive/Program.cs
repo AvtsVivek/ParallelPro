@@ -4,7 +4,7 @@ using System.Threading;
 
 class SimpleClass
 {
-    public int Counter = 0;
+    public int Counter { get; set; } = default(int);
 }
 class Program
 {

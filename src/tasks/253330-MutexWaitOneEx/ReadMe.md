@@ -11,3 +11,7 @@ Mutext derives from WaitHandle class
 public sealed class Mutex : WaitHandle
 {}
 ```
+
+- Wait handles can be shared between processes. The Mutexes in this example is local, meaning that it is only usable in one process
+
+- A local Mutex is created when you use the default constructor
