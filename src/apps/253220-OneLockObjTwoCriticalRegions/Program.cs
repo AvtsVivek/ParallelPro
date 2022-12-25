@@ -51,7 +51,7 @@ class Program
                 {
                     lock (lockObj)
                     {
-                        // update the balance
+                        // update the counter
                         simpleObject.Counter = simpleObject.Counter - 2;
                     }
                 }
@@ -71,7 +71,7 @@ class Program
 
         // write out the counter value
         Console.WriteLine("Expected value: -5000");
-        Console.WriteLine("Balance: {0}", simpleObject.Counter);
+        Console.WriteLine("counter: {0}", simpleObject.Counter);
 
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");

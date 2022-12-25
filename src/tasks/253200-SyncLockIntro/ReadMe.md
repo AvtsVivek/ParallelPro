@@ -13,7 +13,7 @@ counter, as shown in the following fragment:
 
 ```cs
 for (int j = 0; j < 1000; j++) {
-    // update the balance
+    // update the counter
     simpleObject.Counter++; // <-- critical region
 }
 ```

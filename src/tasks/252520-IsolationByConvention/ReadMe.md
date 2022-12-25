@@ -4,7 +4,7 @@
 
 - We can provide a Task with isolated data by using the constructor overload that takes a state object.
 
-- Each Task is given the current counter value(simpleObject.Counter whose value is 0) as a state object when it is created. The data is isolated because each Task only modifies its own version of the balance. When all of the Tasks have completed, we read the
+- Each Task is given the current counter value(simpleObject.Counter whose value is 0) as a state object when it is created. The data is isolated because each Task only modifies its own version of the counter. When all of the Tasks have completed, we read the
 results and combine them to accurately update the counter value.
 
 - So the simpleObject.Counter value changes only in the end after all of the tasks are executed completely and successifully.

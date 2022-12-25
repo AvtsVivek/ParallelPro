@@ -30,7 +30,7 @@ class Program
                     bool lockAcquired = mutex.WaitOne();
                     try
                     {
-                        // update the balance
+                        // update the counter
                         simpleObject.Counter = simpleObject.Counter + 1;
                     }
                     finally
@@ -52,7 +52,7 @@ class Program
         Task.WaitAll(taskList.ToArray());
 
         // write out the counter value
-        Console.WriteLine("Expected value {0}, Balance: {1}", 50000, simpleObject.Counter);
+        Console.WriteLine("Expected value {0}, counter: {1}", 50000, simpleObject.Counter);
 
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");

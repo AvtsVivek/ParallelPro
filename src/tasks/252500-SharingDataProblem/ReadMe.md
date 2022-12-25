@@ -1,6 +1,6 @@
 - The example creates 10 Tasks, each of which increments the Counter property 1,000 times.
 We then wait for all of the Tasks to complete and print out the value of Counter value. If there are ten Tasks and each
-of them increments Balance 1,000 times, the final value should be 10,000 (10 × 1000).
+of them increments counter 1000 times, the final value should be 10K (10 × 1000).
 
 - What happens in practice is different.
 Expected value 10000, Actual value: 8840

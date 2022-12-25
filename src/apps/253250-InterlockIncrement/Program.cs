@@ -39,7 +39,7 @@ class Program
         Task.WaitAll(taskList.ToArray());
 
         // write out the counter value
-        Console.WriteLine("Expected value {0}, Balance: {1}",
+        Console.WriteLine("Expected value {0}, Counter: {1}",
             50000, simpleObject.Counter);
 
         // wait for input before exiting

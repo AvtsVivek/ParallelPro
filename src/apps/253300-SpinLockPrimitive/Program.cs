@@ -25,9 +25,9 @@ class Program
             var task = new Task(() =>
             {
                 // get a local copy of the shared data
-                var startBalance = simpleObject.Counter;
+                var startCounter = simpleObject.Counter;
                 // create a local working copy of the shared data
-                var localBalance = startBalance;
+                var localCounter = startCounter;
 
                 // enter a loop for 1000 increments
                 for (var j = 0; j < 1000; j++)
@@ -36,7 +36,7 @@ class Program
                     try
                     {
                         spinlock.Enter(ref lockAcquired);
-                        // update the balance
+                        // update the counter
                         simpleObject.Counter = simpleObject.Counter + 1;
                     }
                     finally
@@ -57,7 +57,7 @@ class Program
         Task.WaitAll(taskList.ToArray());
 
         // write out the counter value
-        Console.WriteLine("Expected value {0}, Balance: {1}", 50000, simpleObject.Counter);
+        Console.WriteLine("Expected value {0}, Counter: {1}", 50000, simpleObject.Counter);
 
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");
