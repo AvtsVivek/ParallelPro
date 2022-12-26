@@ -10,9 +10,6 @@ class Program
 {
     private static void Main(string[] args)
     {
-        // create the bank account instance
-        // var simpleObject1 = new SimpleClass();
-        // var simpleObject2 = new SimpleClass();
 
         // declare the name we will use for the mutex
         var mutexName = "myApressMutex";
