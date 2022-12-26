@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WriterLockWithMultipleReader": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

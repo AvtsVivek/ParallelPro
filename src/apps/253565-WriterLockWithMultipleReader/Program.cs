@@ -17,9 +17,6 @@
         // create the reader-writer lock
         var readerWriterLockSlim = new ReaderWriterLockSlim();
 
-        // create a cancellation token source
-        var cancellationTokenSource = new CancellationTokenSource();
-
         // create an array of tasks
         var taskList = new List<Task>();
 
@@ -39,14 +36,12 @@
                     // we now have the lock
                     Console.WriteLine($"Read lock acquired - count: {readerWriterLockSlim.CurrentReadCount}. The current thread id is {Thread.CurrentThread.ManagedThreadId}");
                     // wait - this simulates a read operation
-                    cancellationTokenSource.Token.WaitHandle.WaitOne(1000);
+                    Task.Delay(1000).Wait();
                     // release the read lock
                     readerWriterLockSlim.ExitReadLock();
                     Console.WriteLine($"Read lock released - count: {readerWriterLockSlim.CurrentReadCount}. The current thread id is {Thread.CurrentThread.ManagedThreadId}");
-                    // check for cancellation
-                    cancellationTokenSource.Token.ThrowIfCancellationRequested();
                 }
-            }, cancellationTokenSource.Token);
+            });
 
             taskList.Add(task);
         }
@@ -69,20 +64,6 @@
         Console.ReadLine();
         // release the write lock
         readerWriterLockSlim.ExitWriteLock();
-
-        // wait for 2 seconds and then cancel the tasks
-        cancellationTokenSource.Token.WaitHandle.WaitOne(2000);
-        cancellationTokenSource.Cancel();
-
-        try
-        {
-            // wait for the tasks to complete
-            Task.WaitAll(taskList.ToArray());
-        }
-        catch (AggregateException)
-        {
-            // do nothing
-        }
 
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");

@@ -4,6 +4,6 @@ cd src/tasks/253580-ReaderWriterLockSlimEx
 
 cd src/apps/253580-ReaderWriterLockSlimEx
 
-dotnet run --project ./ReaderWriterLockSlimEx.csproj
+dotnet run --project ./ReaderWriterLockSlimEx.csproj -- true
 
-
+dotnet run --project ./ReaderWriterLockSlimEx.csproj -- false
