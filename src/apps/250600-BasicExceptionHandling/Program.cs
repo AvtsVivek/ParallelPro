@@ -70,7 +70,6 @@ class Program
         }
 
         // wait for input before exiting
-        // wait for input before exiting
         Console.WriteLine("Main method complete. Press enter to finish.");
         Console.ReadLine();
     }
