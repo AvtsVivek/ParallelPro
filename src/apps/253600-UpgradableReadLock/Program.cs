@@ -53,7 +53,6 @@ class Program
 
         var writerTaskList = new List<Task>();
 
-        // Task[] writerTasks = new Task[2];
         for (int i = 0; i < 2; i++)
         {
             var task = new Task(() => {
