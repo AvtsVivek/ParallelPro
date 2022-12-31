@@ -9,9 +9,7 @@ class Program
 
         // populate the collection with items to process
         for (int i = 0; i < 1000; i++)
-        {
-            sharedQueue.Enqueue(i);
-        }
+            sharedQueue.Enqueue(i);       
 
         // define a counter for the number of processed items
         var itemCount = 0;
