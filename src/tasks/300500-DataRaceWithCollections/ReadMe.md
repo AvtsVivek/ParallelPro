@@ -26,3 +26,22 @@ Press enter to finish
 
 - The second is a System.InvalidOperationException, thrown when calls to Queue.Dequeue() are made when the queue is
 empty; this happens because the check to see if there are items left in the queue (sharedQueue.Count > 0) and the request to take an item from the queue (sharedQueue.Dequeue()) are not protected in a critical region.
+
+- So how can we mitigate this?
+
+- We have 4 examples. 
+
+
+- https://github.com/AvtsVivek/ParallelPro/tree/main/src/tasks/300565-ConcurrentBagSimpleEx
+- https://github.com/AvtsVivek/ParallelPro/tree/main/src/tasks/300625-ConcurrentQueueSimpleEx
+- https://github.com/AvtsVivek/ParallelPro/tree/main/src/tasks/300645-ConcurrentStackSimpleEx
+- https://github.com/AvtsVivek/ParallelPro/tree/main/src/tasks/300745-ConcurrentDictionarySimpleEx
+
+ 
+
+- https://github.com/AvtsVivek/ParallelPro/tree/main/src/apps/300565-ConcurrentBagSimpleEx
+- https://github.com/AvtsVivek/ParallelPro/tree/main/src/apps/300625-ConcurrentQueueSimpleEx
+- https://github.com/AvtsVivek/ParallelPro/tree/main/src/apps/300645-ConcurrentStackSimpleEx
+- https://github.com/AvtsVivek/ParallelPro/tree/main/src/apps/300745-ConcurrentDictionarySimpleEx
+
+- 
