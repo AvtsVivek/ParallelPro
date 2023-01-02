@@ -12,6 +12,9 @@ Example for the [book Packt Publishing Parallel-Programming-and-Concurrency-with
   - https://github.com/Apress/pro-.net-4-parallel-programming-in-csharp
   - 
 
+- Semaphore Explained C#
+- https://www.youtube.com/watch?v=GKjM4AX8NME
+- 
 - https://www.youtube.com/watch?v=E0Ld7ZgE4oY
 - https://www.youtube.com/watch?v=YxDORrTvIGM
 - 
