@@ -12,5 +12,10 @@ Example for the [book Packt Publishing Parallel-Programming-and-Concurrency-with
   - https://github.com/Apress/pro-.net-4-parallel-programming-in-csharp
   - 
 
+- https://www.youtube.com/watch?v=E0Ld7ZgE4oY
+- https://www.youtube.com/watch?v=YxDORrTvIGM
+- 
+- 
+
 here we go...
 Test 16
