@@ -20,7 +20,7 @@
 
         foreach (string msg in messages)
         {
-            Task myTask = new Task(obj => PrintMessage((string)obj!), msg);
+            var myTask = new Task(obj => PrintMessage((string)obj!), msg);
             myTask.Start();
         }
 
