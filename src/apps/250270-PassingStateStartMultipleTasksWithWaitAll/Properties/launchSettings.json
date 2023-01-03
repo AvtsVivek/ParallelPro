@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PassingStateStartMultipleTasksWithWaitAll": {
+      "commandName": "Project",
+      "commandLineArgs": "false"
+    }
+  }
+}
