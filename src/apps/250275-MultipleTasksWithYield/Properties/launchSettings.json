@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MultipleTasksWithYield": {
+      "commandName": "Project",
+      "commandLineArgs": "false"
+    }
+  }
+}
