@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SemaphoreWithHttpClient": {
+      "commandName": "Project",
+      "commandLineArgs": "20 8 false"
+    }
+  }
+}
