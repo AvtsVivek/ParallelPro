@@ -30,6 +30,21 @@ namespace OrderablePartitionerDemo
                         await RunOneCountExample();
                         return;
                     }
+                case "RunOneKeyWithTenPeople":
+                    {
+                        await RunOneKeyWithTenPeople();
+                        return;
+                    }
+                case "RunOneKeyWithTenPeopleWithRelease":
+                    {
+                        await RunOneKeyWithTenPeopleWithRelease();
+                        return;
+                    }
+                case "RunTenKeysWithTenPeople":
+                    {
+                        await RunTenKeysWithTenPeople();
+                        return;
+                    }
                 default:
                     {
                         Console.WriteLine("No example ran.");
@@ -53,5 +68,22 @@ namespace OrderablePartitionerDemo
             var examples = new SemaphoreSlimExamples(1);
             await examples.OneCountExample();
         }
+        private static async Task RunOneKeyWithTenPeople()
+        {
+            var examples = new SemaphoreSlimExamples(1);
+            await examples.OneKeyWithTenPeople();
+        }
+        private static async Task RunOneKeyWithTenPeopleWithRelease()
+        {
+            var examples = new SemaphoreSlimExamples(1);
+            await examples.OneKeyWithTenPeopleWithRelease();
+        }
+
+        private static async Task RunTenKeysWithTenPeople()
+        {
+            var examples = new SemaphoreSlimExamples(10);
+            await examples.TenKeysWithTenPeople();
+        }
+        
     }
 }
