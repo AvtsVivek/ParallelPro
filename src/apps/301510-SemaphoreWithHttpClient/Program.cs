@@ -7,16 +7,19 @@ namespace OrderablePartitionerDemo
         private static HttpClient _httpClient = null!;
         private static SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1);
         private static bool _useSemaphore = false;
+        private static string _webUrl = string.Empty;
         private static int _callCount = 0;
         static void Main(string[] args)
         {
-            if(!ReadCommandLineArgsAndGetRead(args))
+            if(!ReadCommandLineArgsAndGetReady(args))
                 return;
+
+            var taskArray = CreateCalls().ToArray();
 
             try
             {
                 // wait for the tasks to complete
-                Task.WaitAll(CreateCalls().ToArray());
+                Task.WaitAll(taskArray);
             }
             catch (AggregateException exception)
             {
@@ -29,39 +32,40 @@ namespace OrderablePartitionerDemo
         private static IEnumerable<Task> CreateCalls()
         {
             for (int i = 0; i < _callCount; i++)
-                yield return CallGoogle(_useSemaphore);
+                yield return CallWebUrl(_useSemaphore);
 
         }
 
-        private static async Task CallGoogle(bool useSemaphore)
+        private static async Task CallWebUrl(bool useSemaphore)
         {
-
-            var url = "https://youtube.com";
 
             if (useSemaphore)
             {
                 await _semaphoreSlim.WaitAsync();
-                var response = await _httpClient.GetAsync(url);
+                var response = await _httpClient.GetAsync(_webUrl);
                 _semaphoreSlim.Release();
                 Console.WriteLine(response.StatusCode);
             }
             else
             {
-                var response = await _httpClient.GetAsync(url);
+                var response = await _httpClient.GetAsync(_webUrl);
                 Console.WriteLine(response.StatusCode);
             }
         }
 
-        private static bool ReadCommandLineArgsAndGetRead(string[] args)
+        private static bool ReadCommandLineArgsAndGetReady(string[] args)
         {
             var callCountString = string.Empty;
             var httpClientTimeoutString = string.Empty;
             var useSemaphoreString = string.Empty;
-            if (args.Length == 3)
+            var webUrlString = string.Empty;
+
+            if (args.Length == 4)
             {
                 callCountString = args[0];
                 httpClientTimeoutString = args[1];
                 useSemaphoreString = args[2];
+                webUrlString = args[3];
             }
             else
             {
@@ -89,6 +93,8 @@ namespace OrderablePartitionerDemo
                 Console.WriteLine("UseSemaphore string is invalid. It should be 'true' or 'false'");
                 return false;
             }
+
+            _webUrl= webUrlString;
 
             return true;
         }
