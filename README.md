@@ -18,6 +18,10 @@ Example for the [book Packt Publishing Parallel-Programming-and-Concurrency-with
 - https://www.youtube.com/watch?v=E0Ld7ZgE4oY
 - https://www.youtube.com/watch?v=YxDORrTvIGM
 - 
+- Channels
+- https://www.youtube.com/watch?v=YxDORrTvIGM
+- https://www.youtube.com/watch?v=E0Ld7ZgE4oY
+- https://www.youtube.com/watch?v=d710rXRLiXM
 - 
 
 here we go...
