@@ -11,8 +11,10 @@ class TaskContinuation
 {
     static void Main(string[] args)
     {
+        // We are calling here antecedentTask and continuationTask.
+        // Better would be with the suffix Task and so antecedent and continuation.
 
-        var task = new Task<SimpleClass>(() => {
+        var antecedentTask = new Task<SimpleClass>(() => {
             // create a new simple object
             var simpleObject = new SimpleClass();
             // enter a loop
@@ -25,12 +27,12 @@ class TaskContinuation
             return simpleObject;
         });
 
-        task.ContinueWith((Task<SimpleClass> antecedent) => {
-            Console.WriteLine("Final Balance: {0}", antecedent.Result.Counter);
+        var continuationTask = antecedentTask.ContinueWith((Task<SimpleClass> antecedent) => {
+            Console.WriteLine("Final Counter: {0}", antecedent.Result.Counter);
         });
 
         // start the task
-        task.Start();
+        antecedentTask.Start();
 
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");
