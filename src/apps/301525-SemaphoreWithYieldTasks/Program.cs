@@ -10,12 +10,27 @@ class Program
     {
         Console.WriteLine("{0} tasks can enter the semaphore.", _semaphoreSlim.CurrentCount);
 
-        var taskList = new List<Task>();
+        var taskList = CreateTaskList(5).ToList();
 
-        // Create and start five numbered tasks.
-        for (int i = 0; i <= 4; i++)
+        taskList.ForEach(task => task.Start());
+
+        // Wait for half a second, to allow all the tasks to start and block.
+        Thread.Sleep(500);
+
+        // Restore the semaphore count to its maximum value.
+        Console.Write("Main thread calls Release(3) --> ");
+        _semaphoreSlim.Release(3);
+        Console.WriteLine("{0} tasks can enter the semaphore.", _semaphoreSlim.CurrentCount);
+        // Main thread waits for the tasks to complete.
+        Task.WaitAll(taskList.ToArray());
+
+        Console.WriteLine("Main thread exits.");
+    }
+    private static IEnumerable<Task> CreateTaskList(int numberOfTasks)
+    {
+        for (int i = 0; i < numberOfTasks; i++)
         {
-            var task = Task.Run(() =>
+            yield return new Task(() =>
             {
                 // Each task begins by requesting the semaphore.
                 Console.WriteLine("Task {0} begins and waits for the semaphore.", Task.CurrentId);
@@ -37,18 +52,6 @@ class Program
                 }
                 Console.WriteLine("Task {0} releases the semaphore; previous count: {1}.", Task.CurrentId, semaphoreCount);
             });
-            taskList.Add(task);
         }
-        // Wait for half a second, to allow all the tasks to start and block.
-        Thread.Sleep(500);
-
-        // Restore the semaphore count to its maximum value.
-        Console.Write("Main thread calls Release(3) --> ");
-        _semaphoreSlim.Release(3);
-        Console.WriteLine("{0} tasks can enter the semaphore.", _semaphoreSlim.CurrentCount);
-        // Main thread waits for the tasks to complete.
-        Task.WaitAll(taskList.ToArray());
-
-        Console.WriteLine("Main thread exits.");
     }
 }
