@@ -1,18 +1,12 @@
 # Continuation Tasks
 
-- This demos what continuation tasks are run if the antecedent is cancelled. 
+Creating Many-to-One and Any-To-One Continuations
 
-![TaskContinuation](./images/20SelectiveContinuations20.svg)
-
-- Only the following ContinuationTasks are not executed. Except these two all others are executed.
-
-```cs
-var firstStageContinuationTaskNotOnCanceled = firstStageTask.ContinueWith((Task firstStageTask) => {
-    Console.WriteLine("Continuation ...NotOnCanceled"); // This is not executed.
-}, TaskContinuationOptions.NotOnCanceled);
-
-var firstStageContinuationTaskOnlyOnRanToCompletion = firstStageTask.ContinueWith((Task firstStageTask) => {
-    Console.WriteLine("Continuation ...OnlyOnRanToCompletion"); // This is not executed.
-}, TaskContinuationOptions.OnlyOnRanToCompletion);
-```
-
+- The Earlier continuations were one-to-one or one-to-many; 
+- One antecedent has one or more continuations. 
+- This demos ContinueWhenAll() methods of the System.Threading.Tasks.TaskFactory class.
+- Obtain an instance of TaskFactory through the static Task.Factory property.
+- The ContinueWhenAll() and ContinueWhenAny() methods both take an array of Tasks argument. 
+- ContinueWhenAll() schedules a continuation to be performed when all of the Tasks in the array have completed, whereas ContineWhenAny() schedules a continuation to be performed when any single Task in the array has completed. 
+- This demo demonstrates a simple multitask continuation applied to the Isolation example from the previous chapter.
+- 
