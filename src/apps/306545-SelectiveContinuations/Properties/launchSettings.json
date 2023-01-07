@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SelectiveContinuations": {
+      "commandName": "Project",
+      "commandLineArgs": "asdf"
+    }
+  }
+}
