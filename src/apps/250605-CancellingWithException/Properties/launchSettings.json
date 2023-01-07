@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CancellingWithException": {
+      "commandName": "Project",
+      "commandLineArgs": "true"
+    }
+  }
+}

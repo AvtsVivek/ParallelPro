@@ -1,4 +1,6 @@
-﻿class Program
+﻿using System.Threading.Tasks;
+
+class Program
 {
     private static bool PrintThreadInfo = false;
 
@@ -40,30 +42,60 @@
                 }
                 else
                     Console.WriteLine("Int value {0}", i);
-                
+
             }
-        }, cancellationToken);
+        });
 
         // wait for input before we start the task
         Console.WriteLine("Press enter to start task");
         Console.WriteLine("Press enter again to cancel task");
         Console.ReadLine();
 
-        // start the task
-        task.Start();
 
-        // read a line from the console.
-        Console.ReadLine();
 
-        // cancel the task
-        Console.WriteLine("Cancelling task");
 
-        cancellationTokenSource.Cancel();
+        try
+        {
+            // start the task
+            task.Start();
+
+            // read a line from the console.
+            Console.ReadLine();
+
+            // cancel the task
+            Console.WriteLine("Cancelling task");
+
+            cancellationTokenSource.Cancel();
+
+            Task.WaitAll(task);
+
+            // The following line is not getting executed. 
+            // Thats probably because the exception is being raised at the previous step. 
+            // So to know the status, we need to use the finally block. 
+            Console.WriteLine($"Task status in the try block ... {task.Status}");
+
+        }
+        catch (AggregateException ex)
+        {
+            // enumerate the exceptions that have been aggregated
+            foreach (Exception inner in ex.InnerExceptions)
+            {
+                Console.WriteLine("Exception type {0} from {1}",
+                    inner.GetType(), inner.Source);
+            }
+        }
+        finally
+        {
+            Console.WriteLine($"Task status in the finally block ... {task.Status}");
+        }
+
+        Console.WriteLine($"Task status after the try catch finally block ... {task.Status}");
+
 
 
 
         // wait for input before exiting
-        Console.WriteLine($"The status of the task is {task.Status}");
+        Console.WriteLine(task.Status);
         Console.WriteLine("Main method complete. Press enter to finish.");
         Console.ReadLine();
     }

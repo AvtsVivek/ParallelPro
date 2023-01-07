@@ -18,3 +18,21 @@ Task task1 = new Task(new Action(myMethod), token);
 
 - You should throw an instance of the OperationCanceledException to acknowledge a cancellation request.
 
+- Notice that we need to pass token as a parameter
+```cs
+Task task1 = new Task(new Action(myMethod), token);
+```
+- So why is this needed? Take a look at [this ms docs](https://learn.microsoft.com/en-us/dotnet/standard/parallel-programming/task-cancellation)
+
+```
+When a task instance observes an OperationCanceledException thrown by the user code, it compares the exception's token to its associated token (the one that was passed to the API that created the Task). If the tokens are same and the token's IsCancellationRequested property returns true, the task interprets this as acknowledging cancellation and transitions to the Canceled state. 
+```
+
+- If you run this example, then you will see the following
+```
+The status of the task is Running
+```
+- This is because at time of the execution of this pirticular console write line statement, the task status is actually running. 
+- If you wnat to know the exact status, then you have to wait till the tasks completion, so you need to use something like, task.Wait(), or Task.WaitAll(task). But there is a catch here, in order to use this wait, we need to have try catch blocks. 
+- So another example is created based on this same example, added excemption handling. 
+- 

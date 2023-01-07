@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SelectiveContinuationsCancelTask": {
+      "commandName": "Project",
+      "commandLineArgs": "asdf"
+    }
+  }
+}
