@@ -35,4 +35,5 @@ The status of the task is Running
 - This is because at time of the execution of this pirticular console write line statement, the task status is actually running. 
 - If you wnat to know the exact status, then you have to wait till the tasks completion, so you need to use something like, task.Wait(), or Task.WaitAll(task). But there is a catch here, in order to use this wait, we need to have try catch blocks. 
 - So another example is created based on this same example, added excemption handling. 
+- [Take a look at this](https://github.com/AvtsVivek/ParallelPro/tree/main/src/apps/250605-CancellingWithException) and to run [take a look at this](https://github.com/AvtsVivek/ParallelPro/tree/main/src/tasks/250605-CancellingWithException) 
 - 
