@@ -44,14 +44,13 @@ class Program
                     Console.WriteLine("Int value {0}", i);
 
             }
-        });
+        // }, cancellationToken); // Remove the parm cancellationToken, and try running again.
+        }); // Remove the parm cancellationToken, and try running again.
 
         // wait for input before we start the task
         Console.WriteLine("Press enter to start task");
         Console.WriteLine("Press enter again to cancel task");
         Console.ReadLine();
-
-
 
 
         try

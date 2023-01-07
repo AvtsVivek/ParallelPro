@@ -60,10 +60,16 @@
 
         cancellationTokenSource.Cancel();
 
+        // We cannot have the following wait here.
+        // If we want to have this waits, then we need to use try catch block.
+        // Thats for another example.
 
+        //Task.WaitAll(task);
+        //// or
+        //task.Wait();
 
         // wait for input before exiting
-        Console.WriteLine($"The status of the task is {task.Status}");
+        Console.WriteLine($"The status of the task is {task.Status}"); // Running, not cancled.
         Console.WriteLine("Main method complete. Press enter to finish.");
         Console.ReadLine();
     }
