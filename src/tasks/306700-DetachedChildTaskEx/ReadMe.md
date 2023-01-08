@@ -1,10 +1,8 @@
 Check And propagate approach
 
-- Each continuation Task check the status of the antecedent and handle the exception. 
-- You can rethrow the same exception to propagate it throughout the continuation chain. 
-- Doing so will cause all of the tasks in a chain to be scheduled and executed, but it does reduce the chance of an unhandled exception. 
-- This demo this checkand-propagate approach.
-- By having the continuation process the exceptions thrown by the antecedent, we can catch exceptions thrown by the last Task in the chain and be sure to avoid unhandled exceptions. 
-- Note that the Exception property of an antecedent returns an instance of AggregateException. 
-- The InnerException property is read in the continuation Task to avoid nested instances of AggregateException, unpacking the nesting in the exception handler would also work. 
+- A child Task, sometimes known as a nested Task, is one that is created inside the Task body of another. 
+- The Task in which the child is created is known as the parent. 
+- There are two kinds of child Task— 
+  - detached and attached. 
+- A detached Task, as demonstrated in this dome, has no special relationship with its parent; the child will be scheduled and can be performed concurrently with the parent but has no impact on the parent itself.
 - 
