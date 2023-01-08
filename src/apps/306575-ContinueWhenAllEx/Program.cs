@@ -15,7 +15,7 @@ class ContinueWhenAllEx
 
         var antecedentTaskList = new List<Task<int>>();
 
-        for (int i = 0; i < 10; i++)
+        for (var i = 0; i < 10; i++)
         {
             // create a new task
             var antecedentTask = new Task<int>((stateObject) => {
@@ -24,7 +24,7 @@ class ContinueWhenAllEx
                 int isolatedBalance = (int)stateObject!;
 
                 // enter a loop for 1000 balance updates
-                for (int j = 0; j < 1000; j++)
+                for (var j = 0; j < 1000; j++)
                 {
                     // update the balance
                     isolatedBalance++;
@@ -42,7 +42,7 @@ class ContinueWhenAllEx
         var continuation = Task.Factory.ContinueWhenAll<int>(antecedentTaskList.ToArray(), antecedents => {
 
             // run through and sum the individual balances
-            foreach (Task<int> antecedent in antecedents)
+            foreach (var antecedent in antecedents)
                 simpleObject.Counter += antecedent.Result;
             
         });
