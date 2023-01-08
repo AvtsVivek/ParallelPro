@@ -1,4 +1,4 @@
-﻿class ContinueWhenAnyEx
+﻿class CancelingContinuationsEx
 {
     static void Main(string[] args)
     {
@@ -28,7 +28,7 @@
         var badSelectiveTask = antecedentTask.ContinueWith(antecedent => {
             // write out a message
             Console.WriteLine("This task will never be scheduled");
-        }, cancellationToken, TaskContinuationOptions.OnlyOnCanceled);
+        }, cancellationToken, TaskContinuationOptions.OnlyOnCanceled, TaskScheduler.Current);
 
         // create a good selective contiuation
         var continuationTask = antecedentTask.ContinueWith(antecedent => {

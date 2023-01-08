@@ -34,3 +34,7 @@ var task = new Task(() => {
 ```
 When a task instance observes an OperationCanceledException thrown by the user code, it compares the exception's token to its associated token (the one that was passed to the API that created the Task). If the tokens are same and the token's IsCancellationRequested property returns true, the task interprets this as acknowledging cancellation and transitions to the Canceled state. 
 ```
+
+- If a task throws exception **without** any of this cancellationToken, then its simply faulted. If the task is with cancellationToken, then see above, the status can be Cancelled.
+
+- 

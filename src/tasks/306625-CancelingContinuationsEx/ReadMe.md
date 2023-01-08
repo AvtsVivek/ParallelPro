@@ -12,3 +12,6 @@
 - The final Task, named continuation, shows a selective continuation that will run properly when the antecedent is cancelled. 
 
 - What is the TaskScheduler.Current sitting over there? Its needed by the overload. If you dont have it, then its a coompilation error.
+
+- Call the Token.ThrowIfCancellationRequested() method to check for cancellation, and throw an instance of OperationCanceledException in a single code statement
+- 
