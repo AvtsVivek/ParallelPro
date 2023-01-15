@@ -1,4 +1,4 @@
-﻿// create the array of bank accounts
+﻿// create the array of dog breeds
 
 
 var dogBreedList = new List<DogBreed>()
