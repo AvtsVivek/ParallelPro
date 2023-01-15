@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BarrierSimpleExTwo": {
+      "commandName": "Project",
+      "commandLineArgs": "3 3"
+    }
+  }
+}
