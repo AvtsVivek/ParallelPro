@@ -12,6 +12,6 @@ using System.Threading.Tasks;
 class DogBreed
 {
     public string BreedName { get; set; } = default!;
-    public int ShoulderHeight { get; set; }
+    public double ShoulderHeight { get; set; }
 }
 
