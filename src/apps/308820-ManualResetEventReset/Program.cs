@@ -16,10 +16,6 @@ var waitingTask = Task.Factory.StartNew(() => {
     manualResetEvent.Wait();
     Console.WriteLine("Waiting six for the task.");
     manualResetEvent.Wait();
-    Console.WriteLine("Waiting seven for the task.");
-    manualResetEvent.Wait();
-    Console.WriteLine("Waiting eight for the task.");
-    manualResetEvent.Wait();
     Console.WriteLine("Done!!!!");
 });
 
