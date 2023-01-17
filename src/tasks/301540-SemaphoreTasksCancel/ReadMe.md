@@ -8,4 +8,6 @@
 - 
 - Demos the use of this class. Ten worker Tasks are created and call the SemaphoreSlim.Wait() method. 
 - A supervisor Task periodically releases two threads by signaling the primitive by calling SemaphoreSlim.Release(2).
+- If there are no Tasks waiting when you call Release(),the event remains set until the Wait() method has been called. 
+- If you specified a number to release by providing an integer argument, the event remains set until the Wait() method has been called the number of times you specified.
 - 
