@@ -1,5 +1,4 @@
-﻿namespace PeopleViewer;
-
+﻿
 public static class LocalExtensions
 {
     public static string ToDelimitedString<T>(this List<T> list, string delimiter)

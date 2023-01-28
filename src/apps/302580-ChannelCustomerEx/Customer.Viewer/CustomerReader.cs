@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 
-namespace PeopleViewer;
 
 public record Customer(int ID, string GivenName, string FamilyName,
     DateTime StartDate, int Rating, string FormatString)

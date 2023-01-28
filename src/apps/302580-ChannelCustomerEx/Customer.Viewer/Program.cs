@@ -1,7 +1,5 @@
 ﻿using System.Threading.Channels;
 
-namespace PeopleViewer;
-
 class Program
 {
     static async Task Main(string[] args)
