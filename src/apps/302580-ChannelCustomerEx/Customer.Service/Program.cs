@@ -3,7 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.ConfigureKestrel(options => options.ListenLocalhost(9874));
 
 // Add services to the container.
-builder.Services.AddSingleton<IPeopleProvider, HardCodedPeopleProvider>();
+builder.Services.AddSingleton<ICustomerService, CustomerService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -18,22 +18,22 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGet("/people", async (IPeopleProvider provider) =>
+app.MapGet("/customers", async (ICustomerService provider) =>
     {
         await Task.Delay(3000);
-        provider.GetPeople();
+        provider.GetCustomers();
     })
-    .WithName("GetPeople");
+    .WithName("GetCustomers");
 
-app.MapGet("/people/{id}", async (IPeopleProvider provider, int id) =>
+app.MapGet("/customers/{id}", async (ICustomerService provider, int id) =>
     {
         await Task.Delay(1000);
-        return provider.GetPeople().FirstOrDefault(p => p.Id == id);
+        return provider.GetCustomers().FirstOrDefault(p => p.Id == id);
     })
-    .WithName("GetPersonById");
+    .WithName("GetCustomerById");
 
-app.MapGet("/people/ids", 
-    (IPeopleProvider provider) => provider.GetPeople().Select(p => p.Id).ToList())
-    .WithName("GetAllPersonIds");
+app.MapGet("/customers/ids", 
+    (ICustomerService provider) => provider.GetCustomers().Select(p => p.Id).ToList())
+    .WithName("GetAllCustomerIds");
 
 app.Run();

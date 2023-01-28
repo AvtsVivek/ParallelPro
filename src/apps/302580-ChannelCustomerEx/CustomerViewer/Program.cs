@@ -9,7 +9,7 @@ class Program
         var start = DateTimeOffset.Now;
         Console.Clear();
 
-        var ids = await PersonReader.GetIdsAsync();
+        var ids = await CustomerReader.GetIdsAsync();
 
         Console.WriteLine(ids.ToDelimitedString(","));
 
@@ -33,7 +33,7 @@ class Program
     {
         foreach (var id in ids)
         {
-            var person = await PersonReader.GetPersonAsync(id);
+            var person = await CustomerReader.GetCustomerAsync(id);
             DisplayPerson(person);
         }
     }
@@ -45,7 +45,7 @@ class Program
 
         foreach (var id in ids)
         {
-            Task<Person> currentTask = PersonReader.GetPersonAsync(id);
+            Task<Customer> currentTask = CustomerReader.GetCustomerAsync(id);
 
             Task continuation = currentTask.ContinueWith(t =>
             {
@@ -64,7 +64,7 @@ class Program
     // Option 3
     static async Task RunWithChannel(List<int> ids)
     {
-        var channel = Channel.CreateBounded<Person>(10);
+        var channel = Channel.CreateBounded<Customer>(10);
 
         var consumer = ShowData(channel.Reader);
         var producer = ProduceData(ids, channel.Writer);
@@ -73,7 +73,7 @@ class Program
         await consumer;
     }
 
-    static async Task ShowData(ChannelReader<Person> reader)
+    static async Task ShowData(ChannelReader<Customer> reader)
     {
         await foreach (var person in reader.ReadAllAsync())
         {
@@ -81,7 +81,7 @@ class Program
         }
     }
 
-    static async Task ProduceData(List<int> ids, ChannelWriter<Person> writer)
+    static async Task ProduceData(List<int> ids, ChannelWriter<Customer> writer)
     {
         var allTasks = new List<Task>();
         foreach (int id in ids)
@@ -93,13 +93,13 @@ class Program
         writer.Complete();
     }
 
-    static async Task FetchRecord(int id, ChannelWriter<Person> writer)
+    static async Task FetchRecord(int id, ChannelWriter<Customer> writer)
     {
-        var person = await PersonReader.GetPersonAsync(id);
+        var person = await CustomerReader.GetCustomerAsync(id);
         await writer.WriteAsync(person);
     }
 
-    static void DisplayPerson(Person person)
+    static void DisplayPerson(Customer person)
     {
         Console.WriteLine("--------------");
         Console.WriteLine($"{person.ID}: {person}");
