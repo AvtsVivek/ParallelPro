@@ -1,5 +1,4 @@
-﻿namespace People.Service;
-
+﻿
 public record Customer(int Id, string GivenName, string FamilyName,
     DateTime StartDate, int Rating, string FormatString = "")
 {

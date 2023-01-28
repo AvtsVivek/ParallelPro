@@ -1,4 +1,4 @@
-namespace People.Service;
+// namespace Customer.Service;
 
 public interface ICustomerService
 {

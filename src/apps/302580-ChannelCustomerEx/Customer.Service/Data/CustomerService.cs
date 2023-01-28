@@ -1,4 +1,4 @@
-namespace People.Service;
+// namespace Customer.Service;
 public class CustomerService : ICustomerService
 {
     public List<Customer> GetCustomers()

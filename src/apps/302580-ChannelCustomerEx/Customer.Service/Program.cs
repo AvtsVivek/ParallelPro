@@ -1,7 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// You can use the following, but commenting this out will use the config from lauch settings.
-// builder.WebHost.ConfigureKestrel(options => options.ListenLocalhost(9874));
+builder.WebHost.ConfigureKestrel(options => options.ListenLocalhost(9874));
 
 // Add services to the container.
 builder.Services.AddSingleton<ICustomerService, CustomerService>();

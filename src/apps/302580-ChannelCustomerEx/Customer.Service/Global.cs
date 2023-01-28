@@ -1,1 +1,1 @@
-﻿global using People.Service;
+﻿// global using Customer.Service;
