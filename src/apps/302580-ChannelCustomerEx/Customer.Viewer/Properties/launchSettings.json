@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Customer.Viewer": {
+      "commandName": "Project",
+      "commandLineArgs": "RunSequentially"
+    }
+  }
+}

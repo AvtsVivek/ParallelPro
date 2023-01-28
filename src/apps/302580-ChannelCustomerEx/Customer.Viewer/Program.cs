@@ -4,21 +4,47 @@ class Program
 {
     static async Task Main(string[] args)
     {
+        if (args.Length != 1)
+        {
+            Console.WriteLine("We expect one and only argument.");
+            Console.WriteLine($"The number of args are {args.Length}.");
+            Console.WriteLine($"Ensure there is only one argument.");
+            Console.WriteLine("So exiting...");
+            return; // we excpect only one arg
+        }
+
         var start = DateTimeOffset.Now;
         Console.Clear();
-
         var ids = await CustomerReader.GetIdsAsync();
-
         Console.WriteLine(ids.ToDelimitedString(","));
 
-        // Option 1 = Run Sequentially
-        await RunSequentially(ids);
-
-        // Option 2 = Task w/ Continuation
-        //await RunWithContinuation(ids);
-
-        // Option 3 = Channels
-        // await RunWithChannel(ids);
+        switch (args[0])
+        {
+            case "RunSequentially":
+                {
+                    // Option 1 = Run Sequentially
+                    await RunSequentially(ids);
+                }
+                break;
+            case "RunWithContinuation":
+                {
+                    // Option 2 = Run With Continuation
+                    await RunWithContinuation(ids);
+                }
+                break;
+            case "RunWithChannel":
+                {
+                    // Option 3 = Run With Channel
+                    await RunWithChannel(ids);
+                }
+                break;
+            default:
+                {
+                    Console.WriteLine("In correct command line arg.");
+                    Console.WriteLine("Exiting. ....");
+                }
+                break;
+        }
 
         var elapsed = DateTimeOffset.Now - start;
         Console.WriteLine($"\nTotal time: {elapsed}");

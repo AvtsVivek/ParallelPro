@@ -6,7 +6,9 @@ cd src/apps/302580-ChannelCustomerEx
 
 dotnet run --project ./Customer.Service/Customer.Service.csproj
 
-dotnet run --project ./Customer.Viewer/Customer.Viewer.csproj
+dotnet run --project ./Customer.Viewer/Customer.Viewer.csproj -- RunZeroCountExample
 
+dotnet run --project ./Customer.Viewer/Customer.Viewer.csproj -- RunWithContinuation
 
+dotnet run --project ./Customer.Viewer/Customer.Viewer.csproj -- RunWithChannel
 
