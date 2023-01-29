@@ -2,7 +2,7 @@
 
 class Program
 {
-    static async Task Main(string[] args)
+    private static async Task Main(string[] args)
     {
         if (args.Length != 1)
         {
@@ -60,7 +60,7 @@ class Program
     }
 
     // Option 1
-    static async Task RunSequentially(List<int> ids)
+    private static async Task RunSequentially(List<int> ids)
     {
         foreach (var id in ids)
         {
@@ -69,7 +69,7 @@ class Program
         }
     }
 
-    static void RunWithTaskList(List<int> ids)
+    private static void RunWithTaskList(List<int> ids)
     {
         var taskList = new List<Task<Customer>>();
 
@@ -94,7 +94,7 @@ class Program
     }
 
     // Option 2
-    static async Task RunWithContinuation(List<int> ids)
+    private static async Task RunWithContinuation(List<int> ids)
     {
         var allTasks = new List<Task>();
 
@@ -117,7 +117,7 @@ class Program
     }
 
     // Option 3
-    static async Task RunWithChannel(List<int> ids)
+    private static async Task RunWithChannel(List<int> ids)
     {
         var channel = Channel.CreateBounded<Customer>(10);
 
@@ -128,7 +128,7 @@ class Program
         await consumer;
     }
 
-    static async Task ShowData(ChannelReader<Customer> reader)
+    private static async Task ShowData(ChannelReader<Customer> reader)
     {
         await foreach (var person in reader.ReadAllAsync())
         {
@@ -136,25 +136,25 @@ class Program
         }
     }
 
-    static async Task ProduceData(List<int> ids, ChannelWriter<Customer> writer)
+    private static async Task ProduceData(List<int> ids, ChannelWriter<Customer> writer)
     {
         var allTasks = new List<Task>();
         foreach (int id in ids)
         {
-            var currentTask = FetchRecord(id, writer);
+            var currentTask = FetchRecordAndWriteToChannel(id, writer);
             allTasks.Add(currentTask);
         }
         await Task.WhenAll(allTasks);
         writer.Complete();
     }
 
-    static async Task FetchRecord(int id, ChannelWriter<Customer> writer)
+    private static async Task FetchRecordAndWriteToChannel(int id, ChannelWriter<Customer> writer)
     {
         var person = await CustomerReader.GetCustomerAsync(id);
         await writer.WriteAsync(person);
     }
 
-    static void DisplayCustomer(Customer person)
+    private static void DisplayCustomer(Customer person)
     {
         Console.WriteLine("--------------");
         Console.WriteLine($"{person.ID}: {person}");
