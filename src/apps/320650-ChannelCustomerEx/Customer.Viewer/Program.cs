@@ -41,6 +41,7 @@ class Program
             default:
                 {
                     Console.WriteLine("In correct command line arg.");
+                    Console.WriteLine(args[0]);
                     Console.WriteLine("Exiting. ....");
                 }
                 break;

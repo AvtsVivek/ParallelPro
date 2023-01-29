@@ -1,12 +1,12 @@
 cd ../../..
 
-cd src/tasks/302580-ChannelCustomerEx
+cd src/tasks/320650-ChannelCustomerEx
 
-cd src/apps/302580-ChannelCustomerEx
+cd src/apps/320650-ChannelCustomerEx
 
 dotnet run --project ./Customer.Service/Customer.Service.csproj
 
-dotnet run --project ./Customer.Viewer/Customer.Viewer.csproj -- RunZeroCountExample
+dotnet run --project ./Customer.Viewer/Customer.Viewer.csproj -- RunSequentially
 
 dotnet run --project ./Customer.Viewer/Customer.Viewer.csproj -- RunWithContinuation
 
