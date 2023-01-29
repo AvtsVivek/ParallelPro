@@ -26,15 +26,21 @@ class Program
                     await RunSequentially(ids);
                 }
                 break;
-            case "RunWithContinuation":
+            case "RunWithTaskList":
                 {
                     // Option 2 = Run With Continuation
+                    RunWithTaskList(ids);
+                }
+                break;
+            case "RunWithContinuation":
+                {
+                    // Option 3 = Run With Continuation
                     await RunWithContinuation(ids);
                 }
                 break;
             case "RunWithChannel":
                 {
-                    // Option 3 = Run With Channel
+                    // Option 4 = Run With Channel
                     await RunWithChannel(ids);
                 }
                 break;
@@ -50,7 +56,7 @@ class Program
         var elapsed = DateTimeOffset.Now - start;
         Console.WriteLine($"\nTotal time: {elapsed}");
 
-        Console.ReadLine();
+        // Console.ReadLine();
     }
 
     // Option 1
@@ -59,7 +65,31 @@ class Program
         foreach (var id in ids)
         {
             var person = await CustomerReader.GetCustomerAsync(id);
-            DisplayPerson(person);
+            DisplayCustomer(person);
+        }
+    }
+
+    static void RunWithTaskList(List<int> ids)
+    {
+        var taskList = new List<Task<Customer>>();
+
+        foreach (var id in ids)
+        {
+            var customerTask = CustomerReader.GetCustomerAsync(id);
+            taskList.Add(customerTask);
+        }
+
+        // This will throw exception. 
+        // Start may not be called on a promise-style task
+        // taskList.ForEach(task => task.Start());
+        // https://stackoverflow.com/q/14230372/1977871
+        // Thats because the task is already started.
+
+        Task.WaitAll(taskList.ToArray());
+
+        foreach (var task in taskList)
+        {
+            DisplayCustomer(task.Result);
         }
     }
 
@@ -72,12 +102,12 @@ class Program
         {
             Task<Customer> currentTask = CustomerReader.GetCustomerAsync(id);
 
-            Task continuation = currentTask.ContinueWith(t =>
+            var continuation = currentTask.ContinueWith(t =>
             {
-                var person = t.Result;
+                var customer = t.Result;
                 lock (allTasks)
                 {
-                    DisplayPerson(person);
+                    DisplayCustomer(customer);
                 }
             });
 
@@ -102,7 +132,7 @@ class Program
     {
         await foreach (var person in reader.ReadAllAsync())
         {
-            DisplayPerson(person);
+            DisplayCustomer(person);
         }
     }
 
@@ -124,7 +154,7 @@ class Program
         await writer.WriteAsync(person);
     }
 
-    static void DisplayPerson(Customer person)
+    static void DisplayCustomer(Customer person)
     {
         Console.WriteLine("--------------");
         Console.WriteLine($"{person.ID}: {person}");
