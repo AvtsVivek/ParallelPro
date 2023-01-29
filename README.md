@@ -28,3 +28,10 @@ Example for the [book Packt Publishing Parallel-Programming-and-Concurrency-with
 
 here we go...
 Test 16
+
+# To clear the foldres, the following scripts can help.
+
+$binFolders=Get-ChildItem -Path . -Filter ./bin -Recurse -ErrorAction SilentlyContinue -Force
+foreach($binFolder in $binFolders){ Remove-Item -Force -Recurse -Path $binFolder }
+$objFolders=Get-ChildItem -Path . -Filter ./obj -Recurse -ErrorAction SilentlyContinue -Force
+foreach($objFolder in $objFolders){ Remove-Item -Force -Recurse -Path $objFolder }
