@@ -2,9 +2,6 @@
 {
     private static void Main(string[] args)
     {
-
-        // invoke actions described by lambda expressions
-
         Parallel.For(0, 10, index => {
             Console.WriteLine("Task ID {0} processing index: {1}",
                 Task.CurrentId, index);
@@ -13,7 +10,6 @@
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");
         Console.ReadLine();
-
 
     }
 }

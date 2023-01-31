@@ -10,6 +10,7 @@
 
         // explicitly create an array of actions
         var actions = new Action[3];
+
         actions[0] = new Action(() => Console.WriteLine("Action 4"));
         actions[1] = new Action(() => Console.WriteLine("Action 5"));
         actions[2] = new Action(() => Console.WriteLine("Action 6"));
