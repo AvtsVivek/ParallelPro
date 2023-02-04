@@ -6,4 +6,5 @@
 
 - The property, maxDegreeOfParallelism, allows you to limit the number of Tasks that are executed concurrently to perform a parallel loop. Setting a high limit does not increase the degree of parallelism; all you can do with this property is set a limit for the concurrency. Specifying a value of 0 (i.e., no concurrency at all) will cause Parallel.For() and Parallel.ForEach() to throw an exception.
 
+- So maxDegreeOfParallelism = 1 means only one task or thread. You can see the result. Everyting is sequencial.
 - 
