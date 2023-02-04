@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelOptionsBreakExOne", "ParallelOptionsBreakExOne.csproj", "{AC6E2CF2-2E92-4637-A271-59B599E3EE28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParallelOptionsStopBreakExOne", "ParallelOptionsStopBreakExOne.csproj", "{AC6E2CF2-2E92-4637-A271-59B599E3EE28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
