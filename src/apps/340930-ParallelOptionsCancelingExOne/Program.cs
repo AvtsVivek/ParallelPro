@@ -33,7 +33,7 @@ class Program
             // so the user has time to cancel
             Parallel.For(0, Int64.MaxValue, parallelOptions, index => {
                 // do something just to occupy the cpu for a little
-                var result = Math.Pow(index, 3);
+                double result = Math.Pow(index, 3);
                 // write out the current index
                 Console.WriteLine("Index {0}, result {1}", index, result);
                 // put the thread to sleep, just to slow things down
