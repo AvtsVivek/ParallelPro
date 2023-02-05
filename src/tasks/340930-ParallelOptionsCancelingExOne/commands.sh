@@ -6,4 +6,3 @@ cd src/apps/340930-ParallelOptionsCancelingExOne
 
 dotnet run --project ./ParallelOptionsCancelingExOne.csproj
 
-
