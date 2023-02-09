@@ -23,3 +23,5 @@ your loop body.
 in 96 fewer calls to Interlocked than the original loop. 
 - The exact savings depends on the source data and the partition strategy used; the greater the number of iterations, the greater the savings in overhead.
 - This illustrates a Parallel.ForEach() loop with TLS and shows that you can use any of the synchronization techniques we used earlier to coordinate the TLS value with variables outside of the parallel loop.
+
+- Not clear what data partition is. Need to look into.
