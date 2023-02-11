@@ -1,4 +1,4 @@
-- to do 
+- Pallel with TLS Thread Local Storage
 - In this example, the first and second arguments to Parallel.For() are the start and end index values. 
 - The third argument is a delegate that initializes an instance of the thread-local type. In this example, this is an int with a value of 0.
 ```cs
