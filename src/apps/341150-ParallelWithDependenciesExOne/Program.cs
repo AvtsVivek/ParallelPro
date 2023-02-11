@@ -25,16 +25,18 @@ class Program
         for (int currentMonth = 0; currentMonth < 12; currentMonth++)
         {
             // perform the parallel loop on the current month's data
-            Parallel.For(currentMonth * itemsPerMonth, (currentMonth + 1) * itemsPerMonth,
-                new ParallelOptions(),
-                () => 0,
+            Parallel.For(currentMonth * itemsPerMonth, 
+                (currentMonth + 1) * itemsPerMonth, new ParallelOptions(), () => 0,
                 (index, loopstate, tlsBalance) => {
                     return tlsBalance += transactionData[index].Amount;
                 },
-                tlsBalance => monthlyBalances[currentMonth] += tlsBalance);
+                tlsBalance => monthlyBalances[currentMonth] += tlsBalance
+                );
+
             // end of parallel for
             // add the previous month's balance
-            if (currentMonth > 0) monthlyBalances[currentMonth] += monthlyBalances[currentMonth - 1];
+            if (currentMonth > 0)
+                monthlyBalances[currentMonth] += monthlyBalances[currentMonth - 1];
         }
 
         for (int i = 0; i < monthlyBalances.Length; i++)

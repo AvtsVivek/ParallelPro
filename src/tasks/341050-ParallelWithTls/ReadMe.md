@@ -25,3 +25,15 @@ in 96 fewer calls to Interlocked than the original loop.
 - This illustrates a Parallel.ForEach() loop with TLS and shows that you can use any of the synchronization techniques we used earlier to coordinate the TLS value with variables outside of the parallel loop.
 
 - Not clear what data partition is. Need to look into.
+
+- The params for the Parallel.For loop in the example are as follows.
+
+- The start index, inclusive 
+
+- The end index, exclusive
+
+- A System.Threading.Tasks.ParallelOptions instance that configures the behavior of this operation. 
+
+- The function delegate that returns the initial state of the local data for each thread The delegate that is invoked once per iteration.
+
+- The delegate that performs a final action on the local state of each thread.
