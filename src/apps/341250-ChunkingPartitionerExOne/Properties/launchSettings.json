@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ChunkingPartitionerExOne": {
+      "commandName": "Project",
+      "commandLineArgs": "13"
+    }
+  }
+}
