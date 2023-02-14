@@ -31,11 +31,26 @@ class Program
         IEnumerable<Tuple<int, int>> dynamicPartitions = chunkPart.GetDynamicPartitions();
 
         dynamicPartitions.ToList().ForEach(tupleObject => { 
-
             Console.WriteLine($"Itme1: {tupleObject.Item1} Item2: {tupleObject.Item2} ");
-
         });
 
+        IEnumerable<KeyValuePair<long, Tuple<int, int>>> orderableDynamicPartitions = chunkPart.GetOrderableDynamicPartitions();
+
+        orderableDynamicPartitions.ToList().ForEach(tupleObjectKeyValuePair => {
+            Console.WriteLine($"Key: {tupleObjectKeyValuePair.Key} value.Item1: {tupleObjectKeyValuePair.Value.Item1} value.Item2: {tupleObjectKeyValuePair.Value.Item2} ");
+        });
+
+        IList<IEnumerator<Tuple<int, int>>> listEnumeratorTupleIntInt = chunkPart.GetPartitions(1);
+
+        foreach (var enumeratorTupleIntInt in listEnumeratorTupleIntInt)
+        {
+            while (enumeratorTupleIntInt.MoveNext())
+            {
+                Tuple<int, int> item = enumeratorTupleIntInt.Current;
+                
+                Console.WriteLine($"Here we go {item.Item1} and {item.Item2}");
+            }
+        }
 
         //// perform the loop in chunks
         //Parallel.ForEach(chunkPart, chunkRange => {
