@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SyncInLoopBodies": {
+      "commandName": "Project",
+      "commandLineArgs": "ViaTls"
+    }
+  }
+}
