@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PLinqIntro": {
+      "commandName": "Project",
+      "commandLineArgs": "AsParallel"
+    }
+  }
+}
