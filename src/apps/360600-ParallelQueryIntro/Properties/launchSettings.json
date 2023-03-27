@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ParallelQueryIntro": {
+      "commandName": "Project",
+      "commandLineArgs": "AsRegular"
+    }
+  }
+}
