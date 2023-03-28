@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ParallelExtensionKeyValuePair": {
+      "commandName": "Project",
+      "commandLineArgs": "AsSequential"
+    }
+  }
+}
