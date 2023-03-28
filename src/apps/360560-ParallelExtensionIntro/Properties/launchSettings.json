@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ParallelExtensionIntro": {
+      "commandName": "Project",
+      "commandLineArgs": "AsSequential"
+    }
+  }
+}

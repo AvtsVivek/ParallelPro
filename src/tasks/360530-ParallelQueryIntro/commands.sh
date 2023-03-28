@@ -1,8 +1,8 @@
 cd ../../..
 
-cd src/tasks/360600-ParallelQueryIntro 
+cd src/tasks/360530-ParallelQueryIntro 
 
-cd src/apps/360600-ParallelQueryIntro
+cd src/apps/360530-ParallelQueryIntro
 
 
 dotnet run --project ./ParallelQueryIntro.csproj -- AsSequential
