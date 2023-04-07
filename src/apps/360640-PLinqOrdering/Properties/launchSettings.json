@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "PlinqFiltering": {
+    "PLinqOrdering": {
       "commandName": "Project",
       "commandLineArgs": "AsParallel"
     }
