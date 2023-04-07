@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "ParallelExtensionKeyValuePair": {
+    "PlinqFiltering": {
       "commandName": "Project",
       "commandLineArgs": "AsParallel"
     }

@@ -50,12 +50,12 @@ class Program
         {
 
             Parallel.ForEach(sourceData, item => {
-                Console.WriteLine(item);
+                // Console.WriteLine(item);
                 myList.Add(new KeyValuePair<int, double>(item, Math.Pow(item, 2)));
             });
 
             foreach (var d in myList)
-                Console.WriteLine("Parallel result: {0}, {1}", d.Key, d.Value);
+                Console.WriteLine("Parallel result ::::: {0}, {1}", d.Key, d.Value);
 
         }
 
