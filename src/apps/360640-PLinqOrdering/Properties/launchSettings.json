@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PlinqFiltering": {
+      "commandName": "Project",
+      "commandLineArgs": "AsParallel"
+    }
+  }
+}
