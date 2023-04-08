@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PLinqDeferredQueryExecution": {
+      "commandName": "Project",
+      "commandLineArgs": "AsParallel"
+    }
+  }
+}
