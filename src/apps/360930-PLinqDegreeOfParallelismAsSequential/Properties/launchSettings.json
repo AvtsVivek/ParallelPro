@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PLinqDegreeOfParallelismAsSequential": {
+      "commandName": "Project",
+      "commandLineArgs": "AsParallel 3"
+    }
+  }
+}

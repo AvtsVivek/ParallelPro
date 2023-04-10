@@ -30,26 +30,14 @@ class Program
 
         if (!allowedFirstCommandLineArgs.Contains(args[0]))
         {
-            Console.WriteLine($"The first command line args must be one among ... ");
+            Console.WriteLine($"The command line args must be one among ... ");
             allowedFirstCommandLineArgs.ForEach(allowedArg => Console.WriteLine(allowedArg));
-            return;
-        }
-
-        var degreeOfParallelism = 0;
-        if (!int.TryParse(args[1], out degreeOfParallelism))
-        {
-            Console.WriteLine("The second command line arg must be an interger to represent the defree of parallelism. Exiting...");
             return;
         }
 
         Console.WriteLine(args[0]);
 
-        var parallelExecutionMode = ParallelExecutionMode.Default;
 
-        if (args[0] == "ForceParallelism")
-            parallelExecutionMode = ParallelExecutionMode.ForceParallelism;
-
-        Console.WriteLine(parallelExecutionMode);
 
         // create some source data
         int[] sourceData = new int[10];
@@ -67,11 +55,13 @@ class Program
         }
         else
         {
+            Console.WriteLine("As sequential ....");
             // define the query and force parallelism
-            results =
-                sourceData.AsParallel()
-                .WithDegreeOfParallelism(degreeOfParallelism)
+            results = sourceData
+                .AsParallel()
+                .WithDegreeOfParallelism(2)
                 .Where(item => item % 2 == 0)
+                .AsSequential()
                 .Select(item => Math.Pow(item, 2));
         }
 
