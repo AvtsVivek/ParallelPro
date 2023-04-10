@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PLinqExecutionMode": {
+      "commandName": "Project",
+      "commandLineArgs": "ForceParallelism"
+    }
+  }
+}
