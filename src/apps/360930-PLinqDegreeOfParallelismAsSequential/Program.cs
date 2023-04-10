@@ -55,7 +55,7 @@ class Program
         }
         else
         {
-            Console.WriteLine("As sequential ....");
+            Console.WriteLine("As sequential added to parallelism....");
             // define the query and force parallelism
             results = sourceData
                 .AsParallel()

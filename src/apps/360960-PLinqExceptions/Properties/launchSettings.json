@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PLinqExceptions": {
+      "commandName": "Project",
+      "commandLineArgs": "AsParallel 3"
+    }
+  }
+}
