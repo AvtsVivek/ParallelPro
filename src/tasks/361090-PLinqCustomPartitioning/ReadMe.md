@@ -1,12 +1,25 @@
 
 
-When you execute a PLINQ query, Tasks are assigned to process blocks of source data to produce a series
-of results, which are then consumed—typically by a sequential enumeration. You can control how the
-results are passed from the Tasks to the consumer by using the WithMergeOptions() method on an instance of ParallelQuery. 
+Using Custom Partitioning
 
-This method takes a value from the ParallelMergeOptions enumeration. Default, AutoBuggered, NotBuffered and FullyBuffered.
+PLINQ uses the same partitioning approach that you saw in the previous chapter. You can specify a
+customer partitioner for your PLINQ query by using the version of the AsParallel() method that takes
+an instance of the System.Collections.Concurrent.Partitioner class as an argument. 
 
-Specifying a merge option can be useful when you have a PLINQ query that takes a significant
-amount of time to generate each result item. With the default or fully buffered options, the consumer
-will not receive any results for an extended period of time. Listing 6-16 shows how to set the merge
-option.
+Some earlier showed you how to create a custom dynamic partitioner, where the number of partitions is not
+known in advance. Parallel loops support only dynamic partitioners. PLINQ supports the simpler static
+partitioners, which are much easier to write, since you can simply break up the data into blocks. 
+
+This shows a simple static partitioner that works on arrays; see the previous chapter for details of the
+methods that are required to implement a partitioner.
+
+The StaticPartitioner class in this example breaks up the array of objects into partitions that are
+roughly the same size to ensure that each Task that PLINQ assigns to process data receives about the
+same amount of data to work on. Earlier example, demonstrates how to use a custom partitioner with PLINQ.
+
+Rather than call AsParallel() on the source data, we call it on an instance of the partitioner, in this case,
+the StaticPartitioner class from the Listing.
+
+If you wish to preserve order in PLINQ results with a custom partitioner, your class must derive from
+OrderablePartitioner; see the previous chapter for details of this class and how it differs from
+Partitioner.
