@@ -3,27 +3,31 @@
     static void Main(string[] args)
     {
         // create some source data
-        var sourceData = new int[10];
-
+        int[] sourceData = new int[10000];
         for (int i = 0; i < sourceData.Length; i++)
+        {
             sourceData[i] = i;
-        
+        }
 
-        // create the partitioner
-        var partitioner = new StaticPartitioner<int>(sourceData);
+        // perform a custom aggregation
+        double aggregateResult = sourceData.AsParallel().Aggregate(
+            // 1st function - initialize the result
+            0.0,
+            // 2nd function - process each item and the per-Task subtotal
+            (subtotal, item) => subtotal += Math.Pow(item, 2),
+            // 3rd function - process the overall total and the per-Task total
+            (total, subtotal) => total + subtotal,
+            // 4th function - perform final processing
+            total => total / 2);
 
-        // define a query
-        IEnumerable<double> results =
-            partitioner.AsParallel()
-            .Select(item => Math.Pow(item, 2));
-
-        // enumerate the query results
-        foreach (double d in results)
-            Console.WriteLine("Enumeration got result {0}", d);
+        // write out the result
+        Console.WriteLine("Total: {0}", aggregateResult);
 
         // wait for input before exiting
         Console.WriteLine("Press enter to finish");
         Console.ReadLine();
+
+
 
     }
 }
