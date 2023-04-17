@@ -1,28 +1,12 @@
 
 
-This gives a slightly different result from the before ones.
+When you execute a PLINQ query, Tasks are assigned to process blocks of source data to produce a series
+of results, which are then consumed—typically by a sequential enumeration. You can control how the
+results are passed from the Tasks to the consumer by using the WithMergeOptions() method on an instance of ParallelQuery. 
 
-result: 577738328281
-result: 676655953281
-result: 783386078281
-Token source cancelled
-Caught cancellation exception
-Press enter to finish
+This method takes a value from the ParallelMergeOptions enumeration. Default, AutoBuggered, NotBuffered and FullyBuffered.
 
-Whihle the earlier ones gives as follows.
-
-Result: 485712818761
-Result: 576735443761
-Result: 675570568761
-Token source cancelled
-Result: 782218193761
-Result: 896678318761
-Result: 88943761
-Result: 5174068761
-Caught cancellation exception
-Press enter to finish
-
-As you can see the "Token source cancelled" occurs a bit earlier.
-
-
-
+Specifying a merge option can be useful when you have a PLINQ query that takes a significant
+amount of time to generate each result item. With the default or fully buffered options, the consumer
+will not receive any results for an extended period of time. Listing 6-16 shows how to set the merge
+option.
